@@ -1,0 +1,1 @@
+Small script to automate the sorting of files into an organzied directory
