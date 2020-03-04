@@ -31,6 +31,9 @@ def writeList(list_name, file_name):
 
   text_file.close()
 
+for ext in ext_list:
+  os.mkdir(ext)
+
 writeList(file_list, file_list_text)
 writeList(ext_list, ext_list_text)
 
