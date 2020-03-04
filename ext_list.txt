@@ -1,1 +1,5 @@
-List of known file extensions
+txt
+jpg
+mp4
+py
+mp3
