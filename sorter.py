@@ -31,11 +31,18 @@ def writeList(list_name, file_name):
 
   text_file.close()
 
-for ext in ext_list:
-  os.mkdir(ext)
+def create_directory(root_path, ext_list):
+  for ext in ext_list:
+    try:
+      path = os.path.join(root_path, ext)
+      os.mkdir(path)
+    except:
+      print("Creation of the directory failed")
 
-writeList(file_list, file_list_text)
-writeList(ext_list, ext_list_text)
+create_directory(root_path, ext_list)
+
+# writeList(file_list, file_list_text)
+# writeList(ext_list, ext_list_text)
 
 #Write list of files to a txt file
 #Write list of found extensions to txt file
