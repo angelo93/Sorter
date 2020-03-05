@@ -10,19 +10,27 @@ import shutil
 #Initialize variables
 root_path = "C:/Users/Angel/Desktop/Projects/Main/Sorter/test"
 file_list_text = 'file_list.txt'
-file_list = []
 ext_list_text = 'ext_list.txt'
-ext_list = []
 
-#Create a list of files in the root directory
-for root, dirs, files in os.walk(root_path):
-    for file in files:
-      file_list.append(file)
+def createFileList(root_path):
+  file_list = []
 
-#Create a list of all found extensions
-for root, dirs, files in os.walk(root_path):
-    for file in files:
-      ext_list.append(file.split('.')[-1])
+  #Create a list of files in the root directory
+  for root, dirs, files in os.walk(root_path):
+      for file in files:
+        file_list.append(file)
+
+  return file_list
+
+def creatExtList(root_path):
+  ext_list = []
+
+  #Create a list of all found extensions
+  for root, dirs, files in os.walk(root_path):
+      for file in files:
+        ext_list.append(file.split('.')[-1])
+
+  return ext_list
 
 def writeList(list_name, file_name):
   with open(file_name, "w") as text_file:
@@ -39,10 +47,14 @@ def create_directory(root_path, ext_list):
     except:
       print("Creation of the directory failed")
 
-# create_directory(root_path, ext_list)
+#Create a list of files and extensions found in directory tree
+ext_list = creatExtList(root_path)
+file_list = createFileList(root_path)
 
-# writeList(file_list, file_list_text)
-# writeList(ext_list, ext_list_text)
+#Create directories for each extension type in ext_list
+create_directory(root_path, ext_list)
 
 #Write list of files to a txt file
+# writeList(file_list, file_list_text)
 #Write list of found extensions to txt file
+# writeList(ext_list, ext_list_text)
