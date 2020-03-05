@@ -39,7 +39,7 @@ def create_directory(root_path, ext_list):
     except:
       print("Creation of the directory failed")
 
-create_directory(root_path, ext_list)
+# create_directory(root_path, ext_list)
 
 # writeList(file_list, file_list_text)
 # writeList(ext_list, ext_list_text)
