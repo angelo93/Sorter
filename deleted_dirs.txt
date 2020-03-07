@@ -1,5 +1,5 @@
-C:\Users\Angel\Documents\Projects\Sorter\test\jpg
-C:\Users\Angel\Documents\Projects\Sorter\test\mp3
-C:\Users\Angel\Documents\Projects\Sorter\test\mp4
-C:\Users\Angel\Documents\Projects\Sorter\test\py
-C:\Users\Angel\Documents\Projects\Sorter\test\txt
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\jpg
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\mp3
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\mp4
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\py
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\txt
