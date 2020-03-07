@@ -4,7 +4,7 @@
 import os
 
 #Initialize variables
-root_path = "C:/Users/Angel/Desktop/Projects/Main/Sorter/test"
+root_path = os.getcwd() + '\\test'
 files_txt = 'file_list.txt'
 exts_txt = 'ext_list.txt'
 sorting = True
