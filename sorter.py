@@ -92,10 +92,10 @@ def selectOption():
   return option
 
 while sorting:
-
+  
   sortingMenu()
   option = selectOption()
-  
+
   if option == 1:
     file_list = createFileList(root_path)
   if option == 2:
@@ -115,7 +115,7 @@ while sorting:
   if option == 6:
     delEmptyDirs(root_path)
   if option == 7:
-    sorting = False
+    sorting = False  
 
   print('---------------------------------------------------------------------------')
 
