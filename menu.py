@@ -1,3 +1,7 @@
+import create
+import directory
+import write
+from sorter import sorting
 def main_menu():
   print('To Create a list of files, press 1.')
   print('To Create a list of extensions, press 2.')
@@ -15,3 +19,25 @@ def select_opt():
     option = int(input('That is not a valid option, please try again: '))
   
   return option
+
+def exe_opt(option, root_path, files_txt, exts_txt):
+    if option == 1:
+      file_list = create.file_list(root_path)
+    if option == 2:
+      ext_list = create.ext_list(root_path)
+    if option == 3:
+      try:
+        #Create directories for each extension type in ext_list
+        directory.create_directory(root_path, ext_list)
+      except:
+        print('Could not create directories')
+    if option == 4:
+      # Write list of files to a txt file
+      write.txt_list(file_list, files_txt)
+    if option == 5:
+      # Write list of found extensions to txt file
+      write.txt_list(ext_list, exts_txt)
+    if option == 6:
+      directory.del_empty_dirs(root_path)
+    if option == 7:
+      sorting = False  
