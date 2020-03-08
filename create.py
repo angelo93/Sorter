@@ -1,4 +1,5 @@
 import os
+import config
 
 def file_list(root_path):
   file_list = []

@@ -3,11 +3,9 @@
 #Import required libraries
 import os
 import menu
+import config
 
 #Initialize variables
-root_path = os.getcwd() + '\\test'
-files_txt = 'file_list.txt'
-exts_txt = 'ext_list.txt'
 sorting = True
 
 while sorting:
@@ -18,7 +16,7 @@ while sorting:
   if option == 7:
     sorting = False
 
-  menu.exe_opt(option, root_path, files_txt, exts_txt)
+  menu.exe_opt(option, config.root_path, config.files_txt, config.exts_txt)
 
   print('---------------------------------------------------------------------------')
 

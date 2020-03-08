@@ -1,6 +1,7 @@
 import create
 import directory
 import write
+import config
 
 def main_menu():
   print('To Create a list of files, press 1.')
@@ -22,21 +23,21 @@ def select_opt():
 
 def exe_opt(option, root_path, files_txt, exts_txt):
     if option == 1:
-      file_list = create.file_list(root_path)
+      config.file_list = create.file_list(root_path)
     if option == 2:
-      ext_list = create.ext_list(root_path)
+      config.ext_list = create.ext_list(root_path)
     if option == 3:
       try:
         #Create directories for each extension type in ext_list
-        directory.create_directory(root_path, ext_list)
+        directory.create_directory(root_path, config.ext_list)
       except:
         print('Could not create directories')
     if option == 4:
       # Write list of files to a txt file
-      write.txt_list(file_list, files_txt)
+      write.txt_list(config.file_list, files_txt)
     if option == 5:
       # Write list of found extensions to txt file
-      write.txt_list(ext_list, exts_txt)
+      write.txt_list(config.ext_list, exts_txt)
     if option == 6:
       directory.del_empty_dirs(root_path)
     if option == 7:

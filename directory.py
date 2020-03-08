@@ -1,5 +1,6 @@
 import os
 import write
+import config
 
 def create_directory(root_path, ext_list):
   for ext in ext_list:

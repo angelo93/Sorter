@@ -1,4 +1,5 @@
 import os
+import config
 
 save_path = os.getcwd() + '\\lists'
 
