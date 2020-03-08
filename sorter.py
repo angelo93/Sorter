@@ -2,10 +2,7 @@
 
 #Import required libraries
 import os
-import create
-import directory
 import menu
-import write
 
 #Initialize variables
 root_path = os.getcwd() + '\\test'
@@ -22,5 +19,6 @@ while sorting:
     sorting = False
 
   menu.exe_opt(option, root_path, files_txt, exts_txt)
+  
   print('---------------------------------------------------------------------------')
 

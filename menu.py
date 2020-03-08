@@ -1,7 +1,7 @@
 import create
 import directory
 import write
-from sorter import sorting
+
 def main_menu():
   print('To Create a list of files, press 1.')
   print('To Create a list of extensions, press 2.')
@@ -40,4 +40,4 @@ def exe_opt(option, root_path, files_txt, exts_txt):
     if option == 6:
       directory.del_empty_dirs(root_path)
     if option == 7:
-      sorting = False  
+      print('Terminating program')  
