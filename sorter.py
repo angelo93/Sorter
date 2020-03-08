@@ -14,11 +14,11 @@ while sorting:
   
   menu.main_menu()
   option = menu.select_opt()
-
+  
   if option == 7:
     sorting = False
 
   menu.exe_opt(option, root_path, files_txt, exts_txt)
-  
+
   print('---------------------------------------------------------------------------')
 
