@@ -16,7 +16,7 @@ while sorting:
   if option == 7:
     sorting = False
 
-  menu.exe_opt(option, config.root_path, config.files_txt, config.exts_txt)
+  menu.exe_opt(option, config.root_path)
 
   print('---------------------------------------------------------------------------')
 

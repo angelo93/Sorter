@@ -21,7 +21,7 @@ def select_opt():
   
   return option
 
-def exe_opt(option, root_path, files_txt, exts_txt):
+def exe_opt(option, root_path):
     if option == 1:
       config.file_list = create.file_list(root_path)
     if option == 2:
@@ -34,10 +34,10 @@ def exe_opt(option, root_path, files_txt, exts_txt):
         print('Could not create directories')
     if option == 4:
       # Write list of files to a txt file
-      write.txt_list(config.file_list, files_txt)
+      write.txt_list(config.file_list, config.files_txt)
     if option == 5:
       # Write list of found extensions to txt file
-      write.txt_list(config.ext_list, exts_txt)
+      write.txt_list(config.ext_list, config.exts_txt)
     if option == 6:
       directory.del_empty_dirs(root_path)
     if option == 7:
