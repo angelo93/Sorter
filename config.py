@@ -6,3 +6,4 @@ files_txt = 'file_list.txt'
 exts_txt = 'ext_list.txt'
 ext_list = []
 file_list = []
+directory_ext_dict = {}

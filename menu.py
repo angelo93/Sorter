@@ -2,6 +2,7 @@ import create
 import directory
 import write
 import config
+import move
 
 def main_menu():
   print('To Create a list of files, press 1.')
@@ -14,7 +15,7 @@ def main_menu():
 
 def select_opt():
   option = int(input('Please select an option: '))
-  valid = [1, 2, 3, 4, 5, 6, 7]
+  valid = [1, 2, 3, 4, 5, 6, 7, 8]
 
   while option not in valid:
     option = int(input('That is not a valid option, please try again: '))
@@ -41,4 +42,6 @@ def exe_opt(option, root_path):
     if option == 6:
       directory.del_empty_dirs(root_path)
     if option == 7:
-      print('Terminating program')  
+      print('Terminating program')
+    if option == 8:
+      move.move_files()

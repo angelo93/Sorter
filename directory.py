@@ -7,6 +7,7 @@ def create_directory(root_path, ext_list):
     try:
       new_dir_path = os.path.join(root_path, ext)
       os.mkdir(new_dir_path)
+      config.directory_ext_dict[ext] = new_dir_path
     except:
       if os.path.isdir(new_dir_path):
         print('Directory "{}" already exists'.format(ext))
