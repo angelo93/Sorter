@@ -11,10 +11,10 @@ while sorting:
   menu.main_menu()
   option = menu.select_opt()
   
-  if option == 7:
+  if option == '8':
     sorting = False
 
-  menu.exe_opt(option, config.root_path)
+  menu.exe_opt(option)
 
   print('---------------------------------------------------------------------------')
 
