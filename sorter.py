@@ -1,5 +1,3 @@
-#Move files into their respective folders
-
 #Import required libraries
 import os
 import menu

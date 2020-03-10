@@ -1,5 +1,0 @@
-test1.txt
-test2.jpg
-test3.mp4
-walk1.py
-walk2.mp3

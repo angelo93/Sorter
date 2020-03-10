@@ -1,5 +1,0 @@
-txt
-jpg
-mp4
-py
-mp3
