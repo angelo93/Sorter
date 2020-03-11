@@ -1,7 +1,6 @@
 # Import required libraries
 import directory
 import write
-import move
 import os
 import sys
 import shutil
