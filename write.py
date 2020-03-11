@@ -1,5 +1,4 @@
 import os
-import config
 
 save_path = os.getcwd() + '\\lists'
 
@@ -7,7 +6,7 @@ def make_dir():
   try:
     os.mkdir(save_path)
   except:
-    print('List folder already exists proceeding to write file')
+    print('Folder for lists already exists, proceeding to write file')
 
 def txt_list(list_name, file_name):
   complete_name = os.path.join(save_path, file_name)

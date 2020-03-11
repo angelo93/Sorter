@@ -1,20 +1,22 @@
 #Import required libraries
 import os
 import menu
-import config
 
 #Initialize variables
 sorting = True
+new_menu = menu.MainMenu()
+new_menu.show_menu()
 
 while sorting:
   
-  menu.main_menu()
-  option = menu.select_opt()
+  option = new_menu.get_opt()
+  new_menu.create_file_and_ext_lists()
   
-  if option == '8':
+  if option == '6':
     sorting = False
 
-  menu.exe_opt(option)
+  if option == 'M':
+    new_menu.show_menu()
 
-  print('---------------------------------------------------------------------------')
+  new_menu.execute_opt(option)
 

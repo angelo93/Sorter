@@ -1,20 +1,23 @@
 import os
 import write
-import config
 
-def create_directory():
-  for ext in config.ext_list:
+def create_directory(root_path, ext_list):
+  directory_ext_dict = {}
+
+  for ext in ext_list:
     try:
-      new_dir_path = os.path.join(config.root_path, ext)
+      new_dir_path = os.path.join(root_path, ext)
       os.mkdir(new_dir_path)
-      config.directory_ext_dict[ext] = new_dir_path
+      directory_ext_dict[ext] = new_dir_path
     except:
       if os.path.isdir(new_dir_path):
         print('Directory "{}" already exists'.format(ext))
       else:
         print("Creation of the directory failed")
+  
+  return directory_ext_dict
 
-def del_empty_dirs():
+def del_empty_dirs(root_path):
   choice = input('Are you sure you want to find and delete all empty directories? (Y/N): ').upper()
   deleted_dirs = []
   deleted_txt = 'deleted_dirs.txt'
@@ -23,7 +26,7 @@ def del_empty_dirs():
     choice = input('That is not a valid selection, please press "Y" or "N": ').upper()
   
   if choice == 'Y':
-    for dirpath, dirnames, files in os.walk(config.root_path):
+    for dirpath, dirnames, files in os.walk(root_path):
       if len(dirnames) == 0 and len(files) == 0:
         try:
           os.rmdir(dirpath)
@@ -37,5 +40,6 @@ def del_empty_dirs():
       write.txt_list(deleted_dirs, deleted_txt)
     else:
       print('There were no empty directories to delete')
+      
   else:
     print('Aborting')
