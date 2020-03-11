@@ -4,9 +4,10 @@ import write
 import move
 import os
 import sys
+import shutil
 
 class MainMenu:
-  """ Class dealing with all main meny functions. """
+  """ Class dealing with all main menu functions. """
 
   def __init__(self):
     self.root = os.getcwd() + '\\test' # The root path directory to be sorted.
@@ -17,10 +18,25 @@ class MainMenu:
     self.directory_ext_dict = {} # Dictionary with key as an extension and the value as a directory path.
     self.passes = 0 # Simple variable to check how many times the user has selected an option.
 
+  def move_files(self, root_path, path_dictionary):
+    """ Move all files found recursivley inside the root path. 
+        root_path = root directory
+        path_dictionary = dictionary of extensions and their corresponding directory (K = Ext: V = Path). """
+
+    for dirpath, _, filenames in os.walk(root_path):
+      for name in filenames:
+        current_file_ext = name.split('.')[-1] # Current files extension.
+        source = os.path.join(dirpath, name) # Source path of current file.
+        destination = path_dictionary[current_file_ext] + '\\' + name # Path of where the file is to be moved. 
+        try:
+          shutil.move(source, destination)
+        except:
+          print('Destination does not exist')
+
   def create_file_and_ext_lists(self):
     """ Create list of files and extensions found. """
 
-    for dirpath, dirnames, filenames in os.walk(self.root):
+    for _, __, filenames in os.walk(self.root):
         for name in filenames:
           # Check to see if the extension is already in the list of extensions.
           if name.split('.')[-1] not in self.ext_list:
@@ -30,11 +46,12 @@ class MainMenu:
 
   def show_menu(self):
     """ Show main options to user. """
+
     print('Press 1 to Create a directory for all found extensions')
     print('Press 2 to Create a file listing all found files')
     print('Press 3 to Create a file listing all found extensions')
     print('Press 4 to delete all empty directories')
-    print('Press 5 to files to corresponding directories')
+    print('Press 5 to move files to corresponding directories')
     print('Press 6 to terminate program')
 
   def get_opt(self):
@@ -67,7 +84,6 @@ class MainMenu:
       try:
         #Create directories for each extension type in ext_list.
         self.directory_ext_dict = directory.create_directory(self.root, self.ext_list)
-        print(self.directory_ext_dict)
       except:
         print('Could not create directories')
     if option == '2':
@@ -81,7 +97,7 @@ class MainMenu:
       directory.del_empty_dirs(self.root)
     if option == '5':
       # Move found files to directory corresponding to their extension.
-      move.move_files(self.root, self.directory_ext_dict)
+      self.move_files(self.root, self.directory_ext_dict)
     if option == '6':
       print('Terminating program')
       sys.exit()
