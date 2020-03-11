@@ -35,8 +35,8 @@ class MainMenu:
     if self.passes == 0:
       option = input('Please select an option: ').upper()
     else:
-      option = input('Please select another option: ').upper()
       print('If you would like to look at the main menu, press "M".')
+      option = input('Please select another option: ').upper()
 
     valid = ['1', '2', '3', '4', '5', '6', 'M']
 
@@ -51,6 +51,7 @@ class MainMenu:
       try:
         #Create directories for each extension type in ext_list
         self.directory_ext_dict = directory.create_directory(self.root, self.ext_list)
+        print(self.directory_ext_dict)
       except:
         print('Could not create directories')
     if option == '2':
