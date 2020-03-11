@@ -25,13 +25,13 @@ def select_opt():
 
 def exe_opt(option):
     if option == '1':
-      config.file_list = create.file_list(config.root_path)
+      config.file_list = create.file_list()
     if option == '2':
-      config.ext_list = create.ext_list(config.root_path)
+      config.ext_list = create.ext_list()
     if option == '3':
       try:
         #Create directories for each extension type in ext_list
-        directory.create_directory(config.root_path, config.ext_list)
+        directory.create_directory()
       except:
         print('Could not create directories')
     if option == '4':
@@ -41,7 +41,7 @@ def exe_opt(option):
       # Write list of found extensions to txt file
       write.txt_list(config.ext_list, config.exts_txt)
     if option == '6':
-      directory.del_empty_dirs(config.root_path)
+      directory.del_empty_dirs()
     if option == '7':
       move.move_files()
     if option == '8':
