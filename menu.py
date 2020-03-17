@@ -3,7 +3,6 @@ import directory
 import write
 import os
 import sys
-import shutil
 
 class MainMenu():
   """ Class dealing with all main menu functions. """
