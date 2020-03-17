@@ -2,25 +2,41 @@
 import os
 import write
 
-def create_directory(root_path, ext_list):
-  """ Create directory for all found file extensions
-      root_path = path passed in from menu instance
-      ext_list = list of found extensions in root path. """
-  directory_ext_dict = {} # create a dictionary of extensions and corresponding directories
+def move_files(root_path, path_dictionary):
+  """ Move all files found recursivley inside the root path. 
+      root_path = root directory
+      path_dictionary = dictionary of extensions and their corresponding directory (K = Ext: V = Path). """
 
-  # For every extension create a directory
-  for ext in ext_list:
-    try: 
-      new_dir_path = os.path.join(root_path, ext)
+  for dirpath, _, filenames in os.walk(root_path):
+    for name in filenames:
+      current_file_ext = name.split('.')[-1] # Current files extension.
+      source = os.path.join(dirpath, name) # Source path of current file.
+      destination = path_dictionary[current_file_ext] + '\\' + name # Path of where the file is to be moved. 
+      try:
+        shutil.move(source, destination)
+      except:
+        print('Destination does not exist')
+
+def create_directory(root_path, list_type):
+  ''' Create a directory for all file names found.
+      root_path = root passed in from menu instance.
+      list_type = list of extensions or file names
+        1. E.g. file_name.txt = txt 
+        2. E.g. this file name [90932u4] = this file name  '''
+  directory_dict = {}
+
+  for item in list_type:
+    try:
+      new_dir_path = os.path.join(root_path, item)
       os.mkdir(new_dir_path)
-      directory_ext_dict[ext] = new_dir_path # Add new dir path to the dict as the value of the extension
+      directory_dict[item] = new_dir_path
     except:
       if os.path.isdir(new_dir_path):
-        print('Directory "{}" already exists'.format(ext))
+        print('Directory "{}" already exists'.format(item))
       else:
         print("Creation of the directory failed")
   
-  return directory_ext_dict
+  return directory_dict
 
 def del_empty_dirs(root_path):
   """ Delete all empty directories and subdirectories
@@ -47,6 +63,6 @@ def del_empty_dirs(root_path):
       write.txt_list(deleted_dirs, deleted_txt)
     else:
       print('There were no empty directories to delete')
-      
+
   else:
     print('Aborting')

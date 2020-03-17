@@ -21,7 +21,7 @@ def txt_list(list_name, file_name):
   # Call make_dir to make the text folder in case it's not present.
   make_dir()
 
-  with open(complete_name, "w") as text_file:
+  with open(complete_name, "w", encoding='utf-8') as text_file:
     for item in list_name:
       text_file.write(item + '\n')
 
