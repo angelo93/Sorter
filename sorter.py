@@ -5,8 +5,8 @@ import menu
 #Initialize variables
 sorting = True
 new_menu = menu.MainMenu()
-new_menu.show_menu()
 new_menu.create_lists()
+new_menu.show_menu()
 
 while sorting:
   

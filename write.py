@@ -2,7 +2,7 @@
 import os
 
 # Path of folder to hold text files created.
-save_path = os.getcwd() + '\\lists'
+save_path = os.getcwd() + '\\sorted_lists'
 
 def make_dir():
   """ Make the folder hold text files. """

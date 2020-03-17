@@ -1,21 +1,34 @@
 # Import required libraries
 import os
 import write
+import shutil
 
-def move_files(root_path, path_dictionary):
+def move_files(root_path, path_dictionary, choice, split_char = ''):
   """ Move all files found recursivley inside the root path. 
       root_path = root directory
       path_dictionary = dictionary of extensions and their corresponding directory (K = Ext: V = Path). """
 
-  for dirpath, _, filenames in os.walk(root_path):
-    for name in filenames:
-      current_file_ext = name.split('.')[-1] # Current files extension.
-      source = os.path.join(dirpath, name) # Source path of current file.
-      destination = path_dictionary[current_file_ext] + '\\' + name # Path of where the file is to be moved. 
-      try:
-        shutil.move(source, destination)
-      except:
-        print('Destination does not exist')
+  if choice == '1':
+    for dirpath, _, filenames in os.walk(root_path):
+      for name in filenames:
+        current_file = name.split('.')[-1] # Current files extension.
+        source = os.path.join(dirpath, name) # Source path of current file.
+        destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
+        try:
+          shutil.move(source, destination)
+        except:
+          print('Destination "{}" does not exist'.format(destination))
+
+  if choice == '2':
+    for dirpath, _, filenames in os.walk(root_path):
+      for name in filenames:
+        current_file = name.split(split_char)[0] # Current files name
+        source = os.path.join(dirpath, name) # Source path of current file.
+        destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
+        try:
+          shutil.move(source, destination)
+        except:
+          print('Destination "{}" does not exist'.format(destination))
 
 def create_directory_dict(root_path, list_type):
   ''' Create a directory for all file names found.
@@ -26,10 +39,10 @@ def create_directory_dict(root_path, list_type):
   directory_dict = {}
 
   for item in list_type:
+    new_dir_path = os.path.join(root_path, item)
+    directory_dict[item] = new_dir_path
     try:
-      new_dir_path = os.path.join(root_path, item)
       os.mkdir(new_dir_path)
-      directory_dict[item] = new_dir_path
     except:
       if os.path.isdir(new_dir_path):
         print('Directory "{}" already exists'.format(item))
