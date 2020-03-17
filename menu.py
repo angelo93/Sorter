@@ -71,7 +71,7 @@ class MainMenu:
     print('Press 1 to create directories for found extensions')
     print('Press 2 to create directories for found file names')
     
-    choice = input('Please select and option: ')
+    choice = input('Please select an option: ')
     valid = ['1', '2']
 
     while choice not in valid:
@@ -80,13 +80,13 @@ class MainMenu:
     if choice == '1':
       try:
         #Create directories for each extension type in ext_list.
-        self.directory_ext_dict = directory.create_directory(self.root, self.ext_list)
+        self.directory_ext_dict = directory.create_directory_dict(self.root, self.ext_list)
       except:
         print('Could not create directories')
     if choice == '2':
       try:
         #Create directories for each file name in file_name_list.
-        self.directory_file_name_dict = directory.create_directory(self.root, self.file_name_list)
+        self.directory_file_name_dict = directory.create_directory_dict(self.root, self.file_name_list)
       except:
         print('Could not create directories')
   
@@ -97,7 +97,7 @@ class MainMenu:
     print('Press 2 to create a file listing all files')
     print('Press 3 to create a file listing all file names')
     
-    choice = input('Please select and option: ')
+    choice = input('Please select an option: ')
     valid = ['1', '2', '3']
 
     while choice not in valid:
@@ -113,6 +113,22 @@ class MainMenu:
       # Write list of found extensions to txt file.
       write.txt_list(self.file_name_list, self.file_name_txt)
 
+  def option_four(self):
+    ''' Decide whether user is moving files based on their extensions or names. '''
+    print('Press 1 to move files based on their extensions')
+    print('Press 2 to move files based on their names')
+
+    choice = input('Please select an option: ')
+    valid = ['1', '2']
+
+    while choice not in valid:
+      choice = input('That is not a valid option, please try again: ')
+
+    if choice == '1':
+      directory.move_files(self.root, self.directory_ext_dict)
+    if choice == '2':
+      directory.move_files(self.root, self.directory_file_name_dict)
+
   def execute_opt(self, option):
     """ Execute the chosen option of the user. 
         option = option passed in from user. """
@@ -125,7 +141,7 @@ class MainMenu:
       directory.del_empty_dirs(self.root)
     if option == '4':
       # Move found files to directory corresponding to their extension.
-      directory.move_files(self.root, self.directory_ext_dict)
+      self.option_four()
     if option == '5':
       print('Terminating program')
       sys.exit()

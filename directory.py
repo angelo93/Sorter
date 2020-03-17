@@ -17,7 +17,7 @@ def move_files(root_path, path_dictionary):
       except:
         print('Destination does not exist')
 
-def create_directory(root_path, list_type):
+def create_directory_dict(root_path, list_type):
   ''' Create a directory for all file names found.
       root_path = root passed in from menu instance.
       list_type = list of extensions or file names
