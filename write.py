@@ -1,3 +1,4 @@
+''' This file handles the writing of logs based on generated lists. '''
 # Import required libraries
 import os
 
