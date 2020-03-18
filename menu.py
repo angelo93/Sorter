@@ -195,12 +195,16 @@ class MainMenu():
                           '\n  Case sensitivity is important ("c" != "C"): ')
       print('File names will be split using "{}".'.format(self.split_char))
       for _, __, filenames in os.walk(self.root):
-          for name in filenames:
-            if name.split(self.split_char)[0] not in self.file_name_list:
-              self.file_name_list.append(name.split(self.split_char)[0])
+        # Skip hidden files.
+        filenames = [f for f in filenames if not f[0] == '.']
+        for name in filenames:
+          if name.split(self.split_char)[0] not in self.file_name_list:
+            self.file_name_list.append(name.split(self.split_char)[0])
       self.file_name_list = sorted(self.file_name_list)
 
     for _, __, filenames in os.walk(self.root):
+        # Skip hidden files.
+        filenames = [f for f in filenames if not f[0] == '.']
         for name in filenames:
           # Check to see if the extension is already in the list of extensions.
           if name.split('.')[-1] not in self.ext_list:

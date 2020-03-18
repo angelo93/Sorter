@@ -4,37 +4,7 @@
 import os
 import write
 import shutil
-
-def move_files(root_path, path_dictionary, choice, split_char = ''):
-  """ Move all files found recursivley inside the root path. 
-      root_path = root directory
-      path_dictionary = dictionary of extensions and their corresponding directory (K = Ext: V = Path). """
-
-  if choice == '1':
-    for dirpath, _, filenames in os.walk(root_path):
-      for name in filenames:
-        current_file = name.split('.')[-1] # Current files extension.
-        source = os.path.join(dirpath, name) # Source path of current file.
-        destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
-        try:
-          shutil.move(source, destination)
-        except FileExistsError:
-          print('The file "{}" already exists.'.format(destination))
-        except FileNotFoundError:
-          print('Source "{}" does not exist'.format(source))
-
-  if choice == '2':
-    for dirpath, _, filenames in os.walk(root_path):
-      for name in filenames:
-        current_file = name.split(split_char)[0] # Current files name
-        source = os.path.join(dirpath, name) # Source path of current file.
-        destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
-        try:
-          shutil.move(source, destination)
-        except FileExistsError:
-          print('The file "{}" already exists.'.format(destination))
-        except FileNotFoundError:
-          print('Source "{}" does not exist'.format(source))
+import string
 
 def create_directory_dict(root_path, list_type):
   ''' Create a directory for all file names found.
@@ -58,6 +28,25 @@ def create_directory_dict(root_path, list_type):
   
   return directory_dict
 
+def create_alpha_dirs(root_path):
+  ''' Creates alphabetical directories to organize subdirectories. 
+      /A --> /A/A_dir
+         --> /A/Another_dir. '''
+
+  alpha_dirs = {
+    '#': root_path + '\\' + '#',
+    'Other': root_path + '\\' + 'Other'
+  }
+
+  for letter in string.ascii_uppercase:
+    alpha_dirs[letter] = root_path + '\\' + letter
+  
+  for key in alpha_dirs.keys():
+    try:
+      os.mkdir(alpha_dirs[key])
+    except FileExistsError:
+      print('The directory "{}" already exists.'.format(alpha_dirs[key]))
+
 def del_empty_dirs(root_path):
   """ Delete all empty directories and subdirectories
       root_path = path of root folder passed in from menu instance. """
@@ -71,6 +60,7 @@ def del_empty_dirs(root_path):
   
   if choice == 'Y':
     for dirpath, dirnames, files in os.walk(root_path):
+      dirnames[:] = [d for d in dirnames if not d.startswith('.')]
       if len(dirnames) == 0 and len(files) == 0:
         try:
           os.rmdir(dirpath)
@@ -86,4 +76,42 @@ def del_empty_dirs(root_path):
       print('There were no empty directories to delete')
   else:
     print('Aborting')
-    
+
+def org_by_alpha():
+  ''' Organize subdirectories alphabetically. '''
+  pass
+
+def move_files(root_path, path_dictionary, choice, split_char = ''):
+  """ Move all files found recursivley inside the root path. 
+      root_path = root directory
+      path_dictionary = dictionary of extensions and their corresponding directory (K = Ext: V = Path). """
+
+  if choice == '1':
+    for dirpath, _, filenames in os.walk(root_path):
+      # Skip hidden files.
+      filenames = [f for f in filenames if not f[0] == '.']
+      for name in filenames:
+        current_file = name.split('.')[-1] # Current files extension.
+        source = os.path.join(dirpath, name) # Source path of current file.
+        destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
+        try:
+          shutil.move(source, destination)
+        except FileExistsError:
+          print('The file "{}" already exists.'.format(destination))
+        except FileNotFoundError:
+          print('Source "{}" does not exist'.format(source))
+
+  if choice == '2':
+    for dirpath, _, filenames in os.walk(root_path):
+      # Skip hidden files.
+      filenames = [f for f in filenames if not f[0] == '.']
+      for name in filenames:
+        current_file = name.split(split_char)[0] # Current files name
+        source = os.path.join(dirpath, name) # Source path of current file.
+        destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
+        try:
+          shutil.move(source, destination)
+        except FileExistsError:
+          print('The file "{}" already exists.'.format(destination))
+        except FileNotFoundError:
+          print('Source "{}" does not exist'.format(source))
