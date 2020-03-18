@@ -11,7 +11,7 @@ def create_directory_dict(root_path, list_type):
       root_path = root passed in from menu instance.
       list_type = list of extensions or file names
         1. E.g. file_name.txt = txt 
-        2. E.g. this file name [90932u4] = this file name  '''
+        2. E.g. this file name [90932u4] = this file name (split on "["). '''
   
   directory_dict = {}
 
@@ -20,11 +20,12 @@ def create_directory_dict(root_path, list_type):
     directory_dict[item] = new_dir_path
     try:
       os.mkdir(new_dir_path)
+      print('Directory "{}" created.'.format(item))
     except:
       if os.path.isdir(new_dir_path):
-        print('Directory "{}" already exists'.format(item))
+        print('Directory "{}" already exists.'.format(item))
       else:
-        print("Creation of the directory failed")
+        print("Creation of {} directory failed.".format(item))
   
   return directory_dict
 

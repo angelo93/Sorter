@@ -20,7 +20,7 @@ class MainMenu():
     self.split_char, Variable to specify which character to split file names on. '''
 
   def __init__(self, root_path = os.getcwd()):
-    self.root = root_path.replace('\\', '/') + '\\test' # The root path directory to be sorted, default is directory where script is located.
+    self.root = root_path + '\\test' # The root path directory to be sorted, default is directory where script is located.
     self.files_txt = 'file_list.txt' # Filename for creating a text file of all found files.
     self.exts_txt = 'ext_list.txt' # Filename for creating a text file of all found extensions.
     self.file_name_txt = 'file_name_list.txt' # Filename for creating a text file of all found file names.
@@ -197,11 +197,13 @@ class MainMenu():
                     '\n  Ex. 12345[213123].txt split on "[" = 12345: ').upper()
   
     while choice != 'Y' and choice != 'N':
-      choice = input('That is not a valid answer, please pres "Y" or "N". ')
+      choice = input('That is not a valid answer, please pres "Y" or "N". ').upper()
     
     if choice == 'Y':
       self.split_char = input('Please specify which character you would like to split the name on.' \
                           '\n  Case sensitivity is important ("c" != "C"): ')
+      if len(self.split_char) == 0 or self.split_char == None:
+        self.split_char = ' '
       print('File names will be split using "{}".'.format(self.split_char))
       for _, __, filenames in os.walk(self.root):
         # Skip hidden files.
