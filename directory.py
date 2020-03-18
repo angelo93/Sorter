@@ -7,7 +7,7 @@ import shutil
 import string
 
 def create_directory_dict(root_path, list_type):
-  ''' Create a directory for all file names found.
+  ''' Create a directory for all files either by file name or extension and returns a dictionary.
       root_path = root passed in from menu instance.
       list_type = list of extensions or file names
         1. E.g. file_name.txt = txt 
@@ -77,10 +77,34 @@ def del_empty_dirs(root_path):
   else:
     print('Aborting')
 
-def org_by_alpha():
+def org_by_alpha(root_path):
   ''' Organize subdirectories alphabetically. '''
-  pass
 
+  create_alpha_dirs(root_path)
+
+  for dirpath, dirnames, _ in os.walk(root_path):
+    dirnames[:] = [d for d in dirnames if not d.startswith('.')]
+    for dirname in dirnames:
+      source = os.path.join(dirpath, dirname)
+      if dirname[0].isalpha():
+        destination = os.path.join(dirpath, dirname[0].upper(), dirname)
+        try:
+          shutil.move(source, destination)
+        except FileNotFoundError:
+          print('The destination directory does not exist.')
+      elif dirname[0].isdigit():
+        destination = os.path.join(dirpath, '#', dirname)
+        try:
+          shutil.move(source, destination)
+        except FileNotFoundError:
+          print('The destination directory does not exist.')
+      else:
+        destination = os.path.join(dirpath, 'Other', dirname)
+        try:
+          shutil.move(source, destination)
+        except FileNotFoundError:
+          print('The destination directory does not exist.')
+ 
 def move_files(root_path, path_dictionary, choice, split_char = ''):
   """ Move all files found recursivley inside the root path. 
       root_path = root directory

@@ -146,7 +146,8 @@ class MainMenu():
       write.txt_list(self.file_name_list, self.file_name_txt)
 
   def option_four(self):
-    ''' Decide whether user is moving files based on their extensions or names. '''
+    ''' Decide whether user is moving files based on their extensions or names
+        and would also like to organize directories into alphabetical folders. '''
 
     print('-' * 100)
     print('Press 1 to move files based on their extensions')
@@ -161,6 +162,14 @@ class MainMenu():
       directory.move_files(self.root, self.directory_ext_dict, choice)
     if choice == '2':
       directory.move_files(self.root, self.directory_file_name_dict, choice, self.split_char)
+
+    org_dirs = input('Would you like to organize the directories into alphabetical folders? (Y/N): ').upper()
+
+    while org_dirs != 'Y' and org_dirs != 'N':
+      org_dirs = input('Please press "Y" or "N" to organize directories into alphabetical folders: ').upper()
+
+    if org_dirs == 'Y':
+      directory.org_by_alpha(self.root)
   
   def option_five(self):
     ''' Change root directory path and reset file, extension and file name lists.'''
