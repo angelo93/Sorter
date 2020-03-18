@@ -20,7 +20,7 @@ class MainMenu():
     self.split_char, Variable to specify which character to split file names on. '''
 
   def __init__(self, root_path = os.getcwd()):
-    self.root = root_path + '\\test' # The root path directory to be sorted, default is directory where script is located.
+    self.root = root_path.replace('\\', '/') + '\\test' # The root path directory to be sorted, default is directory where script is located.
     self.files_txt = 'file_list.txt' # Filename for creating a text file of all found files.
     self.exts_txt = 'ext_list.txt' # Filename for creating a text file of all found extensions.
     self.file_name_txt = 'file_name_list.txt' # Filename for creating a text file of all found file names.
@@ -179,7 +179,7 @@ class MainMenu():
 
     # Check to see if new path exists, 
     if os.path.isdir(new_dir_path): # If yes, change current to root to new root and create new lists.
-      self.root = new_dir_path
+      self.root = new_dir_path.replace('\\', '/')
       self.create_lists()
     else:
       print('That directory does not exist.')

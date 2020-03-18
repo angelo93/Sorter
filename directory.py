@@ -33,19 +33,21 @@ def create_alpha_dirs(root_path):
       /A --> /A/A_dir
          --> /A/Another_dir. '''
 
-  alpha_dirs = {
-    '#': root_path + '\\' + '#',
-    'Other': root_path + '\\' + 'Other'
-  }
+  alpha_dirs = [
+    root_path + '/' + '#',
+    root_path + '/' + 'Other'
+  ]
 
   for letter in string.ascii_uppercase:
-    alpha_dirs[letter] = root_path + '\\' + letter
-  
-  for key in alpha_dirs.keys():
+    alpha_dirs.append(root_path + '/' + letter)
+
+  for dirname in alpha_dirs:
     try:
-      os.mkdir(alpha_dirs[key])
+      os.mkdir(dirname)
     except FileExistsError:
-      print('The directory "{}" already exists.'.format(alpha_dirs[key]))
+      print('The directory "{}" already exists.'.format(dirname))
+  
+  return alpha_dirs
 
 def del_empty_dirs(root_path):
   """ Delete all empty directories and subdirectories
@@ -80,30 +82,31 @@ def del_empty_dirs(root_path):
 def org_by_alpha(root_path):
   ''' Organize subdirectories alphabetically. '''
 
-  create_alpha_dirs(root_path)
+  alpha_dirs = create_alpha_dirs(root_path)
 
   for dirpath, dirnames, _ in os.walk(root_path):
     dirnames[:] = [d for d in dirnames if not d.startswith('.')]
     for dirname in dirnames:
-      source = os.path.join(dirpath, dirname)
-      if dirname[0].isalpha():
-        destination = os.path.join(dirpath, dirname[0].upper(), dirname)
-        try:
-          shutil.move(source, destination)
-        except FileNotFoundError:
-          print('The destination directory does not exist.')
-      elif dirname[0].isdigit():
-        destination = os.path.join(dirpath, '#', dirname)
-        try:
-          shutil.move(source, destination)
-        except FileNotFoundError:
-          print('The destination directory does not exist.')
-      else:
-        destination = os.path.join(dirpath, 'Other', dirname)
-        try:
-          shutil.move(source, destination)
-        except FileNotFoundError:
-          print('The destination directory does not exist.')
+      source = os.path.join(dirpath, dirname).replace('\\', '/')
+      if source not in alpha_dirs:
+        if dirname[0].isalpha():
+          destination = os.path.join(dirpath, dirname[0].upper(), dirname)
+          try:
+            shutil.move(source, destination)
+          except FileNotFoundError:
+            print('The destination directory does not exist.')
+        elif dirname[0].isdigit():
+          destination = os.path.join(dirpath, '#', dirname)
+          try:
+            shutil.move(source, destination)
+          except FileNotFoundError:
+            print('The destination directory does not exist.')
+        else:
+          destination = os.path.join(dirpath, 'Other', dirname)
+          try:
+            shutil.move(source, destination)
+          except FileNotFoundError:
+            print('The destination directory does not exist.')
  
 def move_files(root_path, path_dictionary, choice, split_char = ''):
   """ Move all files found recursivley inside the root path. 
