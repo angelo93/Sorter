@@ -1,3 +1,4 @@
+''' This file will deal with all directory based operations. '''
 # Import required libraries
 import os
 import write
