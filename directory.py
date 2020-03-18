@@ -46,8 +46,6 @@ def create_alpha_dirs(root_path):
       os.mkdir(dirname)
     except FileExistsError:
       print('The directory "{}" already exists.'.format(dirname))
-  
-  return alpha_dirs
 
 def del_empty_dirs(root_path):
   """ Delete all empty directories and subdirectories
@@ -61,14 +59,13 @@ def del_empty_dirs(root_path):
     choice = input('That is not a valid selection, please press "Y" or "N": ').upper()
   
   if choice == 'Y':
-    for dirpath, dirnames, files in os.walk(root_path):
+    for dirpath, dirnames, files in os.walk(root_path, topdown=False):
       dirnames[:] = [d for d in dirnames if not d.startswith('.')]
-      if len(dirnames) == 0 and len(files) == 0:
-        try:
-          os.rmdir(dirpath)
-          deleted_dirs.append(dirpath)
-        except:
-          print('Directory is not empty')
+      try:
+        os.rmdir(dirpath)
+        deleted_dirs.append(dirpath)
+      except:
+        print('Directory is not empty')
 
     if len(deleted_dirs) > 0:
       print('All empty directories have been deleted')
@@ -82,31 +79,35 @@ def del_empty_dirs(root_path):
 def org_by_alpha(root_path):
   ''' Organize subdirectories alphabetically. '''
 
-  alpha_dirs = create_alpha_dirs(root_path)
+  create_alpha_dirs(root_path)
 
   for dirpath, dirnames, _ in os.walk(root_path):
-    dirnames[:] = [d for d in dirnames if not d.startswith('.')]
+    dirnames[:] = [
+      d for d in dirnames if not d.startswith('.') and 
+      d[0] not in string.ascii_uppercase and 
+      d != '#' and 
+      d != 'Other'
+    ]
     for dirname in dirnames:
       source = os.path.join(dirpath, dirname).replace('\\', '/')
-      if source not in alpha_dirs:
-        if dirname[0].isalpha():
-          destination = os.path.join(dirpath, dirname[0].upper(), dirname)
-          try:
-            shutil.move(source, destination)
-          except FileNotFoundError:
-            print('The destination directory does not exist.')
-        elif dirname[0].isdigit():
-          destination = os.path.join(dirpath, '#', dirname)
-          try:
-            shutil.move(source, destination)
-          except FileNotFoundError:
-            print('The destination directory does not exist.')
-        else:
-          destination = os.path.join(dirpath, 'Other', dirname)
-          try:
-            shutil.move(source, destination)
-          except FileNotFoundError:
-            print('The destination directory does not exist.')
+      if dirname[0].isalpha():
+        destination = os.path.join(dirpath.replace('\\', '/'), dirname[0].upper(), dirname)
+        try:
+          shutil.move(source, destination)
+        except FileNotFoundError:
+          print('The destination directory does not exist.')
+      elif dirname[0].isdigit():
+        destination = os.path.join(dirpath.replace('\\', '/'), '#', dirname)
+        try:
+          shutil.move(source, destination)
+        except FileNotFoundError:
+          print('The destination directory does not exist.')
+      else:
+        destination = os.path.join(dirpath.replace('\\', '/'), 'Other', dirname)
+        try:
+          shutil.move(source, destination)
+        except FileNotFoundError:
+          print('The destination directory does not exist.')
  
 def move_files(root_path, path_dictionary, choice, split_char = ''):
   """ Move all files found recursivley inside the root path. 
