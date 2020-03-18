@@ -36,6 +36,7 @@ def create_directory_dict(root_path, list_type):
       list_type = list of extensions or file names
         1. E.g. file_name.txt = txt 
         2. E.g. this file name [90932u4] = this file name  '''
+  
   directory_dict = {}
 
   for item in list_type:
@@ -76,6 +77,6 @@ def del_empty_dirs(root_path):
       write.txt_list(deleted_dirs, deleted_txt)
     else:
       print('There were no empty directories to delete')
-
   else:
     print('Aborting')
+    

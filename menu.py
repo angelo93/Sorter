@@ -21,12 +21,17 @@ class MainMenu():
     self.split_char = '' # Variable to specify which character to split file names on.
 
   def create_lists(self):
-    """ Create list of files, extensions and file names split on user given character. """
+    """ Create list of files, extensions and file names split on user given character.
+        Will overwright previously created lists. """
+
+    # Reset lists.
+    self.ext_list = [] 
+    self.file_list = [] 
+    self.file_name_list = []
+
     choice = input('Would you also like to create a lists of file names split on a specified character? (Y/N)'\
                     '\n  Ex. 12345[213123].txt split on "[" = 12345: ').upper()
-    
-    # choice = input('Please provide an answer: ')
-
+  
     while choice != 'Y' and choice != 'N':
       choice = input('That is not a valid answer, please pres "Y" or "N". ')
     
@@ -34,13 +39,11 @@ class MainMenu():
       self.split_char = input('Please specify which character you would like to split the name on.' \
                           '\n  Case sensitivity is important ("c" != "C"): ')
       print('File names will be split using "{}".'.format(self.split_char))
-
       for _, __, filenames in os.walk(self.root):
           for name in filenames:
             if name.split(self.split_char)[0] not in self.file_name_list:
               self.file_name_list.append(name.split(self.split_char)[0])
       self.file_name_list = sorted(self.file_name_list)
-
 
     for _, __, filenames in os.walk(self.root):
         for name in filenames:
@@ -51,16 +54,16 @@ class MainMenu():
     
     self.file_list = sorted(self.file_list)
     self.ext_list = sorted(self.ext_list)
-
     print('-' * 100)
 
   def show_menu(self):
     """ Show main options to user. """
-    print('Press 1 to create directories')
-    print('Press 2 to create txt files')
-    print('Press 3 to delete all empty directories')
-    print('Press 4 to move files to corresponding directories')
-    print('Press 5 to terminate program')
+    print('Press 1 to create directories.')
+    print('Press 2 to create txt files.')
+    print('Press 3 to delete all empty directories.')
+    print('Press 4 to move files to corresponding directories.')
+    print('Press 5 to change root directory.')
+    print('Press 6 to terminate program.')
 
   def get_opt(self):
     """ Get option from user. """
@@ -72,7 +75,7 @@ class MainMenu():
       option = input('Please select another option: ').upper()
 
     # List of valid inputs
-    valid = ['1', '2', '3', '4', '5', 'M']
+    valid = ['1', '2', '3', '4', '5', '6', 'M']
 
     # If option is not a valid option, ask user again.
     while option not in valid:
@@ -80,7 +83,6 @@ class MainMenu():
       option = input('That is not a valid option, please try again: ')
     
     self.passes += 1
-
     return option
 
   def option_one(self):
@@ -155,6 +157,15 @@ class MainMenu():
       directory.move_files(self.root, self.directory_ext_dict, choice)
     if choice == '2':
       directory.move_files(self.root, self.directory_file_name_dict, choice, self.split_char)
+  
+  def option_five(self):
+    new_dir_path = input('Please provide the new root directory path:\n')
+
+    if os.path.isdir(new_dir_path):
+      self.root = new_dir_path
+      self.create_lists()
+    else:
+      print('That directory does not exist.')
 
   def execute_opt(self, option):
     """ Execute the chosen option of the user. 
@@ -172,6 +183,8 @@ class MainMenu():
       # Move found files to directory corresponding to their extension.
       self.option_four()
     if option == '5':
+      self.option_five()
+    if option == '6':
       print('Terminating program')
       sys.exit()
     if option == 'M':
