@@ -1,4 +1,4 @@
-''' This file will deal with all directory based operations. '''
+''' This file will deal with all directory and file based operations. '''
 
 # Import required libraries
 import os
@@ -18,8 +18,10 @@ def move_files(root_path, path_dictionary, choice, split_char = ''):
         destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
         try:
           shutil.move(source, destination)
-        except:
-          print('Destination "{}" does not exist'.format(destination))
+        except FileExistsError:
+          print('The file "{}" already exists.'.format(destination))
+        except FileNotFoundError:
+          print('Source "{}" does not exist'.format(source))
 
   if choice == '2':
     for dirpath, _, filenames in os.walk(root_path):
@@ -29,8 +31,10 @@ def move_files(root_path, path_dictionary, choice, split_char = ''):
         destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
         try:
           shutil.move(source, destination)
-        except:
-          print('Destination "{}" does not exist'.format(destination))
+        except FileExistsError:
+          print('The file "{}" already exists.'.format(destination))
+        except FileNotFoundError:
+          print('Source "{}" does not exist'.format(source))
 
 def create_directory_dict(root_path, list_type):
   ''' Create a directory for all file names found.
@@ -57,6 +61,7 @@ def create_directory_dict(root_path, list_type):
 def del_empty_dirs(root_path):
   """ Delete all empty directories and subdirectories
       root_path = path of root folder passed in from menu instance. """
+      
   choice = input('Are you sure you want to find and delete all empty directories? (Y/N): ').upper()
   deleted_dirs = [] # List to record deleted directories
   deleted_txt = 'deleted_dirs.txt' # Text file to view deleted directories

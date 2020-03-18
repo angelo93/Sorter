@@ -7,18 +7,17 @@ import sys
 class MainMenu():
   ''' Class dealing with the display of menus and realization of options. 
 
-    self.root = root_path + '\\test' The root path directory to be sorted, default is directory where script is located.
-    self.files_txt = 'file_list.txt' Filename for creating a text file of all found files.
-    self.exts_txt = 'ext_list.txt' Filename for creating a text file of all found extensions.
-    self.file_name_txt = 'file_name_list.txt' Filename for creating a text file of all found file names.
-    self.ext_list = [] List to hold all extensions.
-    self.file_list = [] List to hold all found files.
-    self.file_name_list = [] List to hold all found file names.
-    self.directory_ext_dict = {} Dictionary with key as an extension and the value as a directory path.
-    self.directory_file_name_dict = {} Dictionary with file name as key and the value as a directory path.
-    self.passes = 0 Simple variable to check how many times the user has selected an option.
-    self.split_char = '' Variable to specify which character to split file names on.
-'''
+    self.root, The root path directory to be sorted, default is directory where script is located.
+    self.files_txt, Filename for creating a text file of all found files.
+    self.exts_txt, Filename for creating a text file of all found extensions.
+    self.file_name_txt, Filename for creating a text file of all found file names.
+    self.ext_list, List to hold all extensions.
+    self.file_list, List to hold all found files.
+    self.file_name_list, List to hold all found file names.
+    self.directory_ext_dict, Dictionary with key as an extension and the value as a directory path.
+    self.directory_file_name_dict, Dictionary with file name as key and the value as a directory path.
+    self.passes, Simple variable to check how many times the user has selected an option.
+    self.split_char, Variable to specify which character to split file names on. '''
 
   def __init__(self, root_path = os.getcwd()):
     self.root = root_path + '\\test' # The root path directory to be sorted, default is directory where script is located.
@@ -35,12 +34,14 @@ class MainMenu():
 
   def show_menu(self):
     ''' Show main options to user. '''
+
     print('Press 1 to create directories.')
     print('Press 2 to create txt files.')
     print('Press 3 to delete all empty directories.')
     print('Press 4 to move files to corresponding directories.')
     print('Press 5 to change root directory.')
     print('Press 6 to terminate program.')
+    print('-' * 100)
 
   def get_opt(self):
     ''' Get option from user. '''
@@ -209,4 +210,3 @@ class MainMenu():
     self.file_list = sorted(self.file_list)
     self.ext_list = sorted(self.ext_list)
     print('-' * 100)
-    
