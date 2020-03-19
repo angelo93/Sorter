@@ -8,7 +8,7 @@ Current features include:
 
 - Creation of directories based on extension or file name.
   - File name is generated based on user given character to split file name on. Default value is ".".
-  "1234.txt" --> "1234".
+  - "1234.txt" --> "1234".
 - Deletion of empty directories.
   - Directories are deleted from bottom of tree to top.
 - Moving files to a corresponding directory based on their extension or their file name.
