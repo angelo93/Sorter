@@ -159,9 +159,9 @@ class MainMenu():
     while choice not in valid:
       choice = input('That is not a valid option, please try again: ')
     if choice == '1':
-      directory.move_files(self.root, self.directory_ext_dict, choice)
+      directory.move_files(self.root, choice)
     if choice == '2':
-      directory.move_files(self.root, self.directory_file_name_dict, choice, self.split_char)
+      directory.move_files(self.root, choice, self.split_char)
 
     org_dirs = input('Would you like to organize the directories into alphabetical folders? (Y/N): ').upper()
 

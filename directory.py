@@ -60,7 +60,7 @@ def del_empty_dirs(root_path):
     choice = input('That is not a valid selection, please press "Y" or "N": ').upper()
   
   if choice == 'Y':
-    for dirpath, dirnames, files in os.walk(root_path, topdown=False):
+    for dirpath, dirnames, _ in os.walk(root_path, topdown=False):
       dirnames[:] = [d for d in dirnames if not d.startswith('.')]
       try:
         os.rmdir(dirpath)
@@ -110,10 +110,9 @@ def org_by_alpha(root_path):
         except FileNotFoundError:
           print('The destination directory does not exist.')
  
-def move_files(root_path, path_dictionary, choice, split_char = ''):
+def move_files(root_path, choice, split_char = ''):
   """ Move all files found recursivley inside the root path. 
-      root_path = root directory
-      path_dictionary = dictionary of extensions and their corresponding directory (K = Ext: V = Path). """
+      root_path = root directory. """
 
   if choice == '1':
     for dirpath, _, filenames in os.walk(root_path):
@@ -122,7 +121,7 @@ def move_files(root_path, path_dictionary, choice, split_char = ''):
       for name in filenames:
         current_file = name.split('.')[-1] # Current files extension.
         source = os.path.join(dirpath, name) # Source path of current file.
-        destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
+        destination = os.path.join(root_path, current_file, name)
         try:
           shutil.move(source, destination)
         except FileExistsError:
@@ -137,9 +136,10 @@ def move_files(root_path, path_dictionary, choice, split_char = ''):
       for name in filenames:
         current_file = name.split(split_char)[0] # Current files name
         source = os.path.join(dirpath, name) # Source path of current file.
-        destination = path_dictionary[current_file] + '\\' + name # Path of where the file is to be moved. 
+        destination = os.path.join(root_path, current_file, name)
         try:
-          shutil.move(source, destination)
+          print(source, destination)
+          # shutil.move(source, destination)
         except FileExistsError:
           print('The file "{}" already exists.'.format(destination))
         except FileNotFoundError:
