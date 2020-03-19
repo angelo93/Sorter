@@ -28,6 +28,9 @@ class MainMenu():
     self.passes = 0 # Simple variable to check how many times the user has selected an option.
     self.split_char = '' # Variable to specify which character to split file names on.
 
+  def clear_screen(self):
+    os.system('cls' if os.name=='nt' else 'clear')
+
   def show_menu(self):
     ''' Show main options to user. '''
 
@@ -48,6 +51,7 @@ class MainMenu():
     else:
       print('If you would like to look at the main menu, press "M".')
       option = input('Please select another option: ').upper()
+      print('-' * 100)
 
     # List of valid inputs
     valid = ['1', '2', '3', '4', '5', '6', 'M']
@@ -56,6 +60,7 @@ class MainMenu():
     while option not in valid:
       print('If you would like to look at the main menu, press "M".')
       option = input('That is not a valid option, please try again: ')
+      print('-' * 100)
     
     self.passes += 1
     return option
@@ -65,31 +70,36 @@ class MainMenu():
         option = option passed in from user. '''
 
     if option == '1':
+      self.clear_screen()
       # Create directories of a particular type
       self.option_one()
     if option == '2':
+      self.clear_screen()
       # Write files using generated lists
       self.option_two()
     if option == '3':
+      self.clear_screen()
       # Delete all empty directories and subdirectories.
       directory.del_empty_dirs(self.root)
+      print('-' * 100)
     if option == '4':
+      self.clear_screen()
       # Move found files to directory corresponding to their extension.
       self.option_four()
     if option == '5':
+      self.clear_screen()
       self.option_five()
     if option == '6':
+      self.clear_screen()
       print('Terminating program')
       sys.exit()
     if option == 'M':
+      self.clear_screen()
       self.show_menu()
-      
-    print('-' * 100)
 
   def option_one(self):
     ''' Function to decide what kind of directories to create. '''
 
-    print('-' * 100)
     print('Press 1 to create directories for found extensions')
     print('Press 2 to create directories for found file names')
     
@@ -110,12 +120,12 @@ class MainMenu():
         directory.create_directory(self.root, self.file_name_list)
       except:
         print('Could not create directories')
-  
+    print('-' * 100)
+
   def option_two(self):
     ''' Create a file listing either all
           extensions, files and or file names. '''
 
-    print('-' * 100)
     print('Press 1 to create a file listing all extensions.')
     print('Press 2 to create a file listing all files.')
     print('Press 3 to create a file listing all file names.')
@@ -140,12 +150,12 @@ class MainMenu():
       write.txt_list(self.file_list, self.files_txt)
       write.txt_list(self.ext_list, self.exts_txt)
       write.txt_list(self.file_name_list, self.file_name_txt)
+    print('-' * 100)
 
   def option_four(self):
     ''' Decide whether user is moving files based on their extensions or names
         and would also like to organize directories into alphabetical folders. '''
 
-    print('-' * 100)
     print('Press 1 to move files based on their extensions')
     print('Press 2 to move files based on their names')
 
@@ -166,6 +176,7 @@ class MainMenu():
 
     if org_dirs == 'Y':
       directory.org_by_alpha(self.root)
+    print('-' * 100)
   
   def option_five(self):
     ''' Change root directory path and reset file, extension and file name lists.'''

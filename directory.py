@@ -61,7 +61,7 @@ def del_empty_dirs(root_path):
         os.rmdir(dirpath)
         deleted_dirs.append(dirpath)
       except:
-        print('Directory is not empty')
+        print('{} is not empty'.format(dirpath))
 
     if len(deleted_dirs) > 0:
       print('All empty directories have been deleted')
