@@ -201,9 +201,9 @@ class MainMenu():
     
     if choice == 'Y':
       self.split_char = input('Please specify which character you would like to split the name on.' \
-                          '\n  Case sensitivity is important ("c" != "C"): ')
+                          '\n  Case sensitivity is important ("c" != "C"), the default character is "." : ')
       if len(self.split_char) == 0 or self.split_char == None:
-        self.split_char = ' '
+        self.split_char = '.'
       print('File names will be split using "{}".'.format(self.split_char))
       for _, __, filenames in os.walk(self.root):
         # Skip hidden files.
