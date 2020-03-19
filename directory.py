@@ -6,18 +6,15 @@ import write
 import shutil
 import string
 
-def create_directory_dict(root_path, list_type):
+def create_directory(root_path, list_type):
   ''' Create a directory for all files either by file name or extension and returns a dictionary.
       root_path = root passed in from menu instance.
       list_type = list of extensions or file names
         1. E.g. file_name.txt = txt 
         2. E.g. this file name [90932u4] = this file name (split on "["). '''
-  
-  directory_dict = {}
 
   for item in list_type:
     new_dir_path = os.path.join(root_path, item)
-    directory_dict[item] = new_dir_path
     try:
       os.mkdir(new_dir_path)
       print('Directory "{}" created.'.format(item))
@@ -26,8 +23,6 @@ def create_directory_dict(root_path, list_type):
         print('Directory "{}" already exists.'.format(item))
       else:
         print("Creation of {} directory failed.".format(item))
-  
-  return directory_dict
 
 def create_alpha_dirs(root_path):
   ''' Creates alphabetical directories to organize subdirectories. 
@@ -138,8 +133,7 @@ def move_files(root_path, choice, split_char = ''):
         source = os.path.join(dirpath, name) # Source path of current file.
         destination = os.path.join(root_path, current_file, name)
         try:
-          print(source, destination)
-          # shutil.move(source, destination)
+          shutil.move(source, destination)
         except FileExistsError:
           print('The file "{}" already exists.'.format(destination))
         except FileNotFoundError:

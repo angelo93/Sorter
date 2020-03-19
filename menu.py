@@ -14,8 +14,6 @@ class MainMenu():
     self.ext_list, List to hold all extensions.
     self.file_list, List to hold all found files.
     self.file_name_list, List to hold all found file names.
-    self.directory_ext_dict, Dictionary with key as an extension and the value as a directory path.
-    self.directory_file_name_dict, Dictionary with file name as key and the value as a directory path.
     self.passes, Simple variable to check how many times the user has selected an option.
     self.split_char, Variable to specify which character to split file names on. '''
 
@@ -27,8 +25,6 @@ class MainMenu():
     self.ext_list = [] # List to hold all extensions.
     self.file_list = [] # List to hold all found files.
     self.file_name_list = [] # List to hold all found file names.
-    self.directory_ext_dict = {} # Dictionary with key as an extension and the value as a directory path.
-    self.directory_file_name_dict = {} # Dictionary with file name as key and the value as a directory path.
     self.passes = 0 # Simple variable to check how many times the user has selected an option.
     self.split_char = '' # Variable to specify which character to split file names on.
 
@@ -105,13 +101,13 @@ class MainMenu():
     if choice == '1':
       try:
         #Create directories for each extension type in ext_list.
-        self.directory_ext_dict = directory.create_directory_dict(self.root, self.ext_list)
+        directory.create_directory(self.root, self.ext_list)
       except:
         print('Could not create directories')
     if choice == '2':
       try:
         #Create directories for each file name in file_name_list.
-        self.directory_file_name_dict = directory.create_directory_dict(self.root, self.file_name_list)
+        directory.create_directory(self.root, self.file_name_list)
       except:
         print('Could not create directories')
   
