@@ -189,11 +189,11 @@ class MainMenu():
       self.root = new_dir_path.replace('\\', '/')
       self.create_lists()
     else:
-      print('That directory does not exist.')
+      print('That directory {} does not exist.'.format(new_dir_path))
 
   def create_lists(self):
     ''' Create list of files, extensions and file names split on user given character.
-        Will overwright previously created lists. '''
+        Will overwrite previously created lists. '''
 
     # Reset lists.
     self.ext_list = [] 
