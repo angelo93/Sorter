@@ -17,14 +17,14 @@ Current features include:
 
 #### TO DO:
 
-- [x] - Read in all files in given root directory.
-- [x] - Record all files found and write to a txt file as a log.
-- [x] - Implement a UI.
-- [x] - Implement ability to creat directories based on file name or extension.
-- [x] - Implement the moving of files into directory based on their name or extension.
-- [x] - Allow user to delete empty directories/subdirectories and log the deleted directories for reference.
-- [x] - Implement ability to allow user to specify a character to split file names on.
-- [x] - Implement option to change root directory.
-- [x] - Add feature to organize directories alphabetically.
+- [x] - ~~Read in all files in given root directory.~~
+- [x] - ~~Record all files found and write to a txt file as a log.~~
+- [x] - ~~Implement a UI.~~
+- [x] - ~~Implement ability to creat directories based on file name or extension.~~
+- [x] - ~~Implement the moving of files into directory based on their name or extension.~~
+- [x] - ~~Allow user to delete empty directories/subdirectories and log the deleted directories for reference.~~
+- [x] - ~~Implement ability to allow user to specify a character to split file names on.~~
+- [x] - ~~Implement option to change root directory.~~
+- [x] - ~~Add feature to organize directories alphabetically.~~
 - [ ] - Add GUI for easier usability.
 - [ ] - Refactor, refactor, refactor.
