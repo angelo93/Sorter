@@ -175,6 +175,8 @@ class MainMenu():
       org_dirs = input('Please press "Y" or "N" to organize directories into alphabetical folders: ').upper()
 
     if org_dirs == 'Y':
+      print('It is recommended that you delete all current empty directories to avoid errors.')
+      directory.del_empty_dirs(self.root)
       directory.org_by_alpha(self.root)
     print('-' * 100)
   
