@@ -81,41 +81,25 @@ def org_by_alpha(root_path):
     dirnames[:] = [
       d for d in dirnames if not d.startswith('.') and 
       d[0] not in string.ascii_uppercase and 
-      d != '#' and 
-      d != 'Other'
+      d[0] != '#' and 
+      d[0] != 'Other'
     ]
     for dirname in dirnames:
       source = os.path.join(dirpath, dirname).replace('\\', '/')
       if dirname[0].isalpha():
         destination = os.path.join(dirpath.replace('\\', '/'), dirname[0].upper(), dirname)
-        try:
-          if os.path.isdir(destination):
-            shutil.copytree(source, destination, dirs_exist_ok=True)
-            shutil.rmtree(source)
-          else:
-            shutil.move(source, destination)
-        except FileNotFoundError:
-          print('The destination directory does not exist.')
       elif dirname[0].isdigit():
         destination = os.path.join(dirpath.replace('\\', '/'), '#', dirname)
-        try:
-          if os.path.isdir(destination):
-            shutil.copytree(source, destination, dirs_exist_ok=True)
-            shutil.rmtree(source)
-          else:
-            shutil.move(source, destination)
-        except FileNotFoundError:
-          print('The destination directory does not exist.')
       else:
         destination = os.path.join(dirpath.replace('\\', '/'), 'Other', dirname)
-        try:
-          if os.path.isdir(destination):
-            shutil.copytree(source, destination, dirs_exist_ok=True)
-            shutil.rmtree(source)
-          else:
-            shutil.move(source, destination)
-        except FileNotFoundError:
-          print('The destination directory does not exist.')
+      try:
+        if os.path.isdir(destination):
+          shutil.copytree(source, destination, dirs_exist_ok=True)
+          shutil.rmtree(source)
+        else:
+          shutil.move(source, destination)
+      except FileNotFoundError:
+        print('The destination directory does not exist.')
  
 def move_files(root_path, choice, split_char = ''):
   """ Move all files found recursivley inside the root path. 
@@ -126,7 +110,7 @@ def move_files(root_path, choice, split_char = ''):
       # Skip hidden files.
       filenames = [f for f in filenames if not f[0] == '.']
       for name in filenames:
-        current_file = name.split('.')[-1] # Current files extension.
+        current_file = name.split('.')[-1] # Current file's extension.
         source = os.path.join(dirpath, name) # Source path of current file.
         destination = os.path.join(root_path, current_file, name)
         try:
@@ -141,7 +125,7 @@ def move_files(root_path, choice, split_char = ''):
       # Skip hidden files.
       filenames = [f for f in filenames if not f[0] == '.']
       for name in filenames:
-        current_file = name.split(split_char)[0] # Current files name
+        current_file = name.split(split_char)[0] # Current file's name
         source = os.path.join(dirpath, name) # Source path of current file.
         destination = os.path.join(root_path, current_file, name)
         try:
