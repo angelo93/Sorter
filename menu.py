@@ -34,11 +34,12 @@ class MainMenu():
     ''' Show main options to user. '''
 
     print('Press 1 to create directories.')
-    print('Press 2 to create txt files.')
+    print('Press 2 to create logs.')
     print('Press 3 to delete all empty directories.')
     print('Press 4 to move files to corresponding directories.')
     print('Press 5 to change root directory.')
-    print('Press 6 to terminate program.')
+    print('press 6 to re-generate file and extensions lists.')
+    print('Press 7 to terminate program.')
     print('-' * 100)
 
   def get_opt(self):
@@ -53,7 +54,7 @@ class MainMenu():
       print('-' * 100)
 
     # List of valid inputs
-    valid = ['1', '2', '3', '4', '5', '6', 'M']
+    valid = ['1', '2', '3', '4', '5', '6', '7', 'M']
 
     # If option is not a valid option, ask user again.
     while option not in valid:
@@ -89,6 +90,9 @@ class MainMenu():
       self.clear_screen()
       self.option_five()
     if option == '6':
+      self.clear_screen()
+      self.create_lists()
+    if option == '7':
       self.clear_screen()
       print('Terminating program')
       sys.exit()
@@ -201,7 +205,7 @@ class MainMenu():
     self.file_list = [] 
     self.file_name_list = []
 
-    choice = input('Would you like to provide a spific character to generate file names with? (Y/N)'\
+    choice = input('Would you like to provide a spicific character to generate file names with? (Y/N)'\
                    '\n  Ex. 12345.txt (split on ".") = 12345: ').upper()
   
     while choice != 'Y' and choice != 'N':
