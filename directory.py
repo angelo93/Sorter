@@ -101,36 +101,51 @@ def org_by_alpha(root_path):
       except FileNotFoundError:
         print('The destination directory does not exist.')
  
-def move_files(root_path, choice, split_char = ''):
+def move_files(root_path, split_char = '.', index = -1):
   """ Move all files found recursivley inside the root path. 
       root_path = root directory. """
 
-  if choice == '1':
-    for dirpath, _, filenames in os.walk(root_path):
-      # Skip hidden files.
-      filenames = [f for f in filenames if not f[0] == '.']
-      for name in filenames:
-        current_file = name.split('.')[-1] # Current file's extension.
-        source = os.path.join(dirpath, name) # Source path of current file.
-        destination = os.path.join(root_path, current_file, name)
-        try:
-          shutil.move(source, destination)
-        except FileExistsError:
-          print('The file "{}" already exists.'.format(destination))
-        except FileNotFoundError:
-          print('Source "{}" does not exist'.format(source))
+  for dirpath, _, filenames in os.walk(root_path):
+    # Skip hidden files.
+    filenames = [f for f in filenames if not f[0] == '.']
+    for name in filenames:
+      current_file = name.split(split_char)[index] # If split_char == '.', file's extension otherwise file's name
+      source = os.path.join(dirpath, name) # Source path of current file.
+      destination = os.path.join(root_path, current_file, name)
+      try:
+        shutil.move(source, destination)
+      except FileExistsError:
+        print('The file "{}" already exists.'.format(destination))
+      except FileNotFoundError:
+        print('Source "{}" does not exist'.format(source))
 
-  if choice == '2':
-    for dirpath, _, filenames in os.walk(root_path):
-      # Skip hidden files.
-      filenames = [f for f in filenames if not f[0] == '.']
-      for name in filenames:
-        current_file = name.split(split_char)[0] # Current file's name
-        source = os.path.join(dirpath, name) # Source path of current file.
-        destination = os.path.join(root_path, current_file, name)
-        try:
-          shutil.move(source, destination)
-        except FileExistsError:
-          print('The file "{}" already exists.'.format(destination))
-        except FileNotFoundError:
-          print('Source "{}" does not exist'.format(source))
+
+  # if choice == '1':
+  #   for dirpath, _, filenames in os.walk(root_path):
+  #     # Skip hidden files.
+  #     filenames = [f for f in filenames if not f[0] == '.']
+  #     for name in filenames:
+  #       current_file = name.split('.')[-1] # Current file's extension.
+  #       source = os.path.join(dirpath, name) # Source path of current file.
+  #       destination = os.path.join(root_path, current_file, name)
+  #       try:
+  #         shutil.move(source, destination)
+  #       except FileExistsError:
+  #         print('The file "{}" already exists.'.format(destination))
+  #       except FileNotFoundError:
+  #         print('Source "{}" does not exist'.format(source))
+
+  # if choice == '2':
+  #   for dirpath, _, filenames in os.walk(root_path):
+  #     # Skip hidden files.
+  #     filenames = [f for f in filenames if not f[0] == '.']
+  #     for name in filenames:
+  #       current_file = name.split(split_char)[0] # Current file's name
+  #       source = os.path.join(dirpath, name) # Source path of current file.
+  #       destination = os.path.join(root_path, current_file, name)
+  #       try:
+  #         shutil.move(source, destination)
+  #       except FileExistsError:
+  #         print('The file "{}" already exists.'.format(destination))
+  #       except FileNotFoundError:
+  #         print('Source "{}" does not exist'.format(source))

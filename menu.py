@@ -165,9 +165,9 @@ class MainMenu():
     while choice not in valid:
       choice = input('That is not a valid option, please try again: ')
     if choice == '1':
-      directory.move_files(self.root, choice)
+      directory.move_files(self.root)
     if choice == '2':
-      directory.move_files(self.root, choice, self.split_char)
+      directory.move_files(self.root, self.split_char, 0)
 
     org_dirs = input('Would you like to organize the directories into alphabetical folders? (Y/N): ').upper()
 
@@ -214,6 +214,7 @@ class MainMenu():
       if len(self.split_char) == 0 or self.split_char == None:
         self.split_char = '.'
       print('File names will be split using "{}".'.format(self.split_char))
+
       for _, __, filenames in os.walk(self.root):
         # Skip hidden files.
         filenames = [f for f in filenames if not f[0] == '.']
