@@ -1,6 +1,5 @@
 # Import required libraries
-import directory
-import write
+import modules
 import os
 import sys
 
@@ -80,7 +79,7 @@ class MainMenu():
     if option == '3':
       self.clear_screen()
       # Delete all empty directories and subdirectories.
-      directory.del_empty_dirs(self.root)
+      modules.del_empty_dirs(self.root)
       print('-' * 100)
     if option == '4':
       self.clear_screen()
@@ -111,13 +110,13 @@ class MainMenu():
     if choice == '1':
       try:
         #Create directories for each extension type in ext_list.
-        directory.create_directory(self.root, self.ext_list)
+        modules.create_directory(self.root, self.ext_list)
       except:
         print('Could not create directories')
     if choice == '2':
       try:
         #Create directories for each file name in file_name_list.
-        directory.create_directory(self.root, self.file_name_list)
+        modules.create_directory(self.root, self.file_name_list)
       except:
         print('Could not create directories')
     print('-' * 100)
@@ -138,18 +137,18 @@ class MainMenu():
       choice = input('That is not a valid option, please try again: ')
     if choice == '1':
       # Write list of files to a txt file.
-      write.txt_list(self.file_list, self.files_txt)
+      modules.write_txt_list(self.file_list, self.files_txt)
     if choice == '2':
       # Write list of found extensions to txt file.
-      write.txt_list(self.ext_list, self.exts_txt)
+      modules.write_txt_list(self.ext_list, self.exts_txt)
     if choice == '3':
       # Write list of found extensions to txt file.
-      write.txt_list(self.file_name_list, self.file_name_txt)
+      modules.write_txt_list(self.file_name_list, self.file_name_txt)
     if choice == '4':
       # Write all files from above options
-      write.txt_list(self.file_list, self.files_txt)
-      write.txt_list(self.ext_list, self.exts_txt)
-      write.txt_list(self.file_name_list, self.file_name_txt)
+      modules.write_txt_list(self.file_list, self.files_txt)
+      modules.write_txt_list(self.ext_list, self.exts_txt)
+      modules.write_txt_list(self.file_name_list, self.file_name_txt)
     print('-' * 100)
 
   def option_four(self):
@@ -165,9 +164,9 @@ class MainMenu():
     while choice not in valid:
       choice = input('That is not a valid option, please try again: ')
     if choice == '1':
-      directory.move_files(self.root)
+      modules.move_files(self.root)
     if choice == '2':
-      directory.move_files(self.root, self.split_char, 0)
+      modules.move_files(self.root, self.split_char, 0)
 
     org_dirs = input('Would you like to organize the directories into alphabetical folders? (Y/N): ').upper()
 
@@ -176,8 +175,8 @@ class MainMenu():
 
     if org_dirs == 'Y':
       print('It is recommended that you delete all current empty directories to avoid errors.')
-      directory.del_empty_dirs(self.root)
-      directory.org_by_alpha(self.root)
+      modules.del_empty_dirs(self.root)
+      modules.org_by_alpha(self.root)
     print('-' * 100)
   
   def option_five(self):

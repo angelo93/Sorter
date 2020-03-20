@@ -1,7 +1,0 @@
-2 levels down.txt
-test_1.txt
-test_2.jpg
-test_3.mp4
-test_4.txt
-walk_1.py
-walk_2.mp3

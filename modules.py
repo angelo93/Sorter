@@ -1,8 +1,7 @@
-''' This file will deal with all directory and file based operations. '''
+''' This file stores all modules for the program. '''
 
 # Import required libraries
 import os
-import write
 import shutil
 import string
 
@@ -66,11 +65,11 @@ def del_empty_dirs(root_path):
     if len(deleted_dirs) > 0:
       print('All empty directories have been deleted')
       print('If you would like to review the directories deleted, please review the deleted_dirs.txt file')
-      write.txt_list(deleted_dirs, deleted_txt)
+      write_txt_list(deleted_dirs, deleted_txt)
     else:
       print('There were no empty directories to delete')
   else:
-    print('Aborting')
+    print('Empty directories will not be deleted.')
 
 def org_by_alpha(root_path):
   ''' Organize subdirectories alphabetically. '''
@@ -119,33 +118,27 @@ def move_files(root_path, split_char = '.', index = -1):
       except FileNotFoundError:
         print('Source "{}" does not exist'.format(source))
 
+def write_txt_list(list_name, file_name):
+  """ Record elements in a given list to a text file for reference. """
+  
+  save_path = os.getcwd() + '\\logs'
 
-  # if choice == '1':
-  #   for dirpath, _, filenames in os.walk(root_path):
-  #     # Skip hidden files.
-  #     filenames = [f for f in filenames if not f[0] == '.']
-  #     for name in filenames:
-  #       current_file = name.split('.')[-1] # Current file's extension.
-  #       source = os.path.join(dirpath, name) # Source path of current file.
-  #       destination = os.path.join(root_path, current_file, name)
-  #       try:
-  #         shutil.move(source, destination)
-  #       except FileExistsError:
-  #         print('The file "{}" already exists.'.format(destination))
-  #       except FileNotFoundError:
-  #         print('Source "{}" does not exist'.format(source))
+  def make_logs_dir(file_name):
+    """ Make the folder to hold text files. """
+    
+    try:
+      os.mkdir(save_path)
+    except FileExistsError:
+      print('Folder for lists already exists, proceeding to write {}'.format(file_name))
 
-  # if choice == '2':
-  #   for dirpath, _, filenames in os.walk(root_path):
-  #     # Skip hidden files.
-  #     filenames = [f for f in filenames if not f[0] == '.']
-  #     for name in filenames:
-  #       current_file = name.split(split_char)[0] # Current file's name
-  #       source = os.path.join(dirpath, name) # Source path of current file.
-  #       destination = os.path.join(root_path, current_file, name)
-  #       try:
-  #         shutil.move(source, destination)
-  #       except FileExistsError:
-  #         print('The file "{}" already exists.'.format(destination))
-  #       except FileNotFoundError:
-  #         print('Source "{}" does not exist'.format(source))
+  # Create the complete path name for the text file.
+  complete_name = os.path.join(save_path, file_name)
+
+  # Call make_dir to make the text folder in case it's not present.
+  make_logs_dir(file_name)
+
+  with open(complete_name, "w", encoding='utf-8') as text_file:
+    for item in list_name:
+      text_file.write(item + '\n')
+
+  text_file.close()
