@@ -108,7 +108,7 @@ def move_files(root_path, split_char = '.', index = -1):
     # Skip hidden files.
     filenames = [f for f in filenames if not f[0] == '.']
     for name in filenames:
-      current_file = name.split(split_char)[index] # If split_char == '.', file's extension otherwise file's name
+      current_file = name.split(split_char)[index].strip() # If split_char == '.', file's extension otherwise file's name
       source = os.path.join(dirpath, name) # Source path of current file.
       destination = os.path.join(root_path, current_file, name)
       try:

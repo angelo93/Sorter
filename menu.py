@@ -224,7 +224,7 @@ class MainMenu():
             self.ext_list.append(name.split('.')[-1])
           # Check to see if the generated file name exists in the list of file names.
           if name.split(self.split_char)[0] not in self.file_name_list:
-            self.file_name_list.append(name.split(self.split_char)[0])
+            self.file_name_list.append(name.split(self.split_char)[0].strip())
           # Check to see if the file already exists in the list of found files.
           if name not in self.file_list:
             self.file_list.append(name)
