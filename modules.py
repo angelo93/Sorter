@@ -1,4 +1,4 @@
-''' This file stores all modules for the program. '''
+''' This file stores all helper functions. '''
 
 # Import required libraries
 import os
