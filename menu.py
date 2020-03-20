@@ -201,26 +201,19 @@ class MainMenu():
     self.file_list = [] 
     self.file_name_list = []
 
-    choice = input('Would you also like to create a lists of file names split on a specified character? (Y/N)'\
-                    '\n  Ex. 12345[213123].txt split on "[" = 12345: ').upper()
+    choice = input('Would you like to provide a spific character to generate file names with? (Y/N)'\
+                   '\n  Ex. 12345.txt (split on ".") = 12345: ').upper()
   
     while choice != 'Y' and choice != 'N':
       choice = input('That is not a valid answer, please pres "Y" or "N". ').upper()
     
     if choice == 'Y':
       self.split_char = input('Please specify which character you would like to split the name on.' \
-                          '\n  Case sensitivity is important ("c" != "C"), the default character is "." : ')
-      if len(self.split_char) == 0 or self.split_char == None:
-        self.split_char = '.'
-      print('File names will be split using "{}".'.format(self.split_char))
-
-      for _, __, filenames in os.walk(self.root):
-        # Skip hidden files.
-        filenames = [f for f in filenames if not f[0] == '.']
-        for name in filenames:
-          if name.split(self.split_char)[0] not in self.file_name_list:
-            self.file_name_list.append(name.split(self.split_char)[0])
-      self.file_name_list = sorted(self.file_name_list)
+                              '\n  Case sensitivity is important ("c" != "C"), the default character is "." : ')
+    
+    if len(self.split_char) == 0 or self.split_char == None:
+      self.split_char = '.'
+    print('File names will be generated using the character "{}".'.format(self.split_char))
 
     for _, __, filenames in os.walk(self.root):
         # Skip hidden files.
@@ -229,8 +222,14 @@ class MainMenu():
           # Check to see if the extension is already in the list of extensions.
           if name.split('.')[-1] not in self.ext_list:
             self.ext_list.append(name.split('.')[-1])
-          self.file_list.append(name)
+          # Check to see if the generated file name exists in the list of file names.
+          if name.split(self.split_char)[0] not in self.file_name_list:
+            self.file_name_list.append(name.split(self.split_char)[0])
+          # Check to see if the file already exists in the list of found files.
+          if name not in self.file_list:
+            self.file_list.append(name)
     
+    self.file_name_list = sorted(self.file_name_list)
     self.file_list = sorted(self.file_list)
     self.ext_list = sorted(self.ext_list)
     print('-' * 100)
