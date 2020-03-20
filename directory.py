@@ -89,19 +89,31 @@ def org_by_alpha(root_path):
       if dirname[0].isalpha():
         destination = os.path.join(dirpath.replace('\\', '/'), dirname[0].upper(), dirname)
         try:
-          shutil.move(source, destination)
+          if os.path.isdir(destination):
+            shutil.copytree(source, destination, dirs_exist_ok=True)
+            shutil.rmtree(source)
+          else:
+            shutil.move(source, destination)
         except FileNotFoundError:
           print('The destination directory does not exist.')
       elif dirname[0].isdigit():
         destination = os.path.join(dirpath.replace('\\', '/'), '#', dirname)
         try:
-          shutil.move(source, destination)
+          if os.path.isdir(destination):
+            shutil.copytree(source, destination, dirs_exist_ok=True)
+            shutil.rmtree(source)
+          else:
+            shutil.move(source, destination)
         except FileNotFoundError:
           print('The destination directory does not exist.')
       else:
         destination = os.path.join(dirpath.replace('\\', '/'), 'Other', dirname)
         try:
-          shutil.move(source, destination)
+          if os.path.isdir(destination):
+            shutil.copytree(source, destination, dirs_exist_ok=True)
+            shutil.rmtree(source)
+          else:
+            shutil.move(source, destination)
         except FileNotFoundError:
           print('The destination directory does not exist.')
  
