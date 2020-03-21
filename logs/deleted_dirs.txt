@@ -1,8 +1,371 @@
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\2 levels down
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_1
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_2
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_3
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_4
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_5
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\walk_1
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\walk_2
+I:/Games/Switch\Action & Adv\A Knights Quest
+I:/Games/Switch\Action & Adv\Corpse Party
+I:/Games/Switch\Action & Adv\Crash
+I:/Games/Switch\Action & Adv\Furi
+I:/Games/Switch\Action & Adv\Incredible Mandy
+I:/Games/Switch\Action & Adv\Kirby
+I:/Games/Switch\Action & Adv\Lapis
+I:/Games/Switch\Action & Adv\Mario\Luigi's Mansion
+I:/Games/Switch\Action & Adv\Mario\Mario Bros
+I:/Games/Switch\Action & Adv\Mario\Mario Kart
+I:/Games/Switch\Action & Adv\Mario\Mario Party
+I:/Games/Switch\Action & Adv\Mario\Olympics
+I:/Games/Switch\Action & Adv\Mario\Super Mario
+I:/Games/Switch\Action & Adv\Mario
+I:/Games/Switch\Action & Adv\Okami
+I:/Games/Switch\Action & Adv\Omensight
+I:/Games/Switch\Action & Adv\Persona Scramble
+I:/Games/Switch\Action & Adv\Princess Guide
+I:/Games/Switch\Action & Adv\Project Nimbus
+I:/Games/Switch\Action & Adv\Resident Evil
+I:/Games/Switch\Action & Adv\Risk of Rain\Risk of Rain
+I:/Games/Switch\Action & Adv\Risk of Rain\Risk of Rain 2
+I:/Games/Switch\Action & Adv\Risk of Rain
+I:/Games/Switch\Action & Adv\Sinking City
+I:/Games/Switch\Action & Adv\Sonic Forces
+I:/Games/Switch\Action & Adv\Splatoon 2
+I:/Games/Switch\Action & Adv\Spyro
+I:/Games/Switch\Action & Adv
+I:/Games/Switch\ARPG\Arc of Alchemist
+I:/Games/Switch\ARPG\Ashen
+I:/Games/Switch\ARPG\Bastion
+I:/Games/Switch\ARPG\Battle Chasers Nightwar
+I:/Games/Switch\ARPG\Blade II
+I:/Games/Switch\ARPG\Children of Morta
+I:/Games/Switch\ARPG\Contra
+I:/Games/Switch\ARPG\Damascus Gear
+I:/Games/Switch\ARPG\Darksiders
+I:/Games/Switch\ARPG\Dawn of the Breakers
+I:/Games/Switch\ARPG\Diablo III
+I:/Games/Switch\ARPG\Divinity II
+I:/Games/Switch\ARPG\Dragons Dawn of New Riders
+I:/Games/Switch\ARPG\Fimbul
+I:/Games/Switch\ARPG\Goken
+I:/Games/Switch\ARPG\Hand of Fate 2
+I:/Games/Switch\ARPG\HOB
+I:/Games/Switch\ARPG\Katana Kami
+I:/Games/Switch\ARPG\OBAKEIDORO
+I:/Games/Switch\ARPG\Omega Labyrinth
+I:/Games/Switch\ARPG\Oninaki
+I:/Games/Switch\ARPG\Redeemer
+I:/Games/Switch\ARPG\RemiLore
+I:/Games/Switch\ARPG\Smashing Battle
+I:/Games/Switch\ARPG\Snack World
+I:/Games/Switch\ARPG\Solstice Chronicles
+I:/Games/Switch\ARPG\Sparklite
+I:/Games/Switch\ARPG\Swords of Ditto
+I:/Games/Switch\ARPG\Torchlight II
+I:/Games/Switch\ARPG\Transistor
+I:/Games/Switch\ARPG\Ultimate Alliance 3
+I:/Games/Switch\ARPG\Zenith
+I:/Games/Switch\ARPG
+I:/Games/Switch\Classics\Baldur's Gate
+I:/Games/Switch\Classics\Castlevania
+I:/Games/Switch\Classics\Collection of Mana
+I:/Games/Switch\Classics\Contra
+I:/Games/Switch\Classics\Disney
+I:/Games/Switch\Classics\Dragon Quest
+I:/Games/Switch\Classics\Grandia
+I:/Games/Switch\Classics\Mega Man
+I:/Games/Switch\Classics\Neverwinter Nights
+I:/Games/Switch\Classics\Pillars of Eternity
+I:/Games/Switch\Classics\Planescape
+I:/Games/Switch\Classics\Romancing Saga
+I:/Games/Switch\Classics
+I:/Games/Switch\Fighting\Arms
+I:/Games/Switch\Fighting\Blade Arcus
+I:/Games/Switch\Fighting\Blade Strangers
+I:/Games/Switch\Fighting\BlazBlue
+I:/Games/Switch\Fighting\Dragon Ball\Xenoverse 2
+I:/Games/Switch\Fighting\Dragon Ball
+I:/Games/Switch\Fighting\Guilty Gear
+I:/Games/Switch\Fighting\Kill La Kill
+I:/Games/Switch\Fighting\Mech City
+I:/Games/Switch\Fighting\MK 11
+I:/Games/Switch\Fighting\My Hero One's Justice
+I:/Games/Switch\Fighting\Pokken
+I:/Games/Switch\Fighting\Power Rangers
+I:/Games/Switch\Fighting\Samurai Shodown
+I:/Games/Switch\Fighting\Skull Girls
+I:/Games/Switch\Fighting\SNK
+I:/Games/Switch\Fighting\Super Smash
+I:/Games/Switch\Fighting\Under Night
+I:/Games/Switch\Fighting
+I:/Games/Switch\Hack N' Slash\Astral Chain
+I:/Games/Switch\Hack N' Slash\Bayonetta
+I:/Games/Switch\Hack N' Slash\Blades of Time
+I:/Games/Switch\Hack N' Slash\Croixleur Sigma
+I:/Games/Switch\Hack N' Slash\Darksiders
+I:/Games/Switch\Hack N' Slash\DMC
+I:/Games/Switch\Hack N' Slash\Dusk Diver
+I:/Games/Switch\Hack N' Slash\FateExtella
+I:/Games/Switch\Hack N' Slash\FateExtella Link
+I:/Games/Switch\Hack N' Slash\Fire Emblem Warriors
+I:/Games/Switch\Hack N' Slash\Hyrule Warriors
+I:/Games/Switch\Hack N' Slash\Nights of Azure
+I:/Games/Switch\Hack N' Slash
+I:/Games/Switch\Hunter\Attack on Titan
+I:/Games/Switch\Hunter\DAEMON X MACHINA
+I:/Games/Switch\Hunter\God Eater 3
+I:/Games/Switch\Hunter\Monster Hunter
+I:/Games/Switch\Hunter
+I:/Games/Switch\Indies\Aer
+I:/Games/Switch\Indies\Airheart
+I:/Games/Switch\Indies\Almightree
+I:/Games/Switch\Indies\American Fugitive
+I:/Games/Switch\Indies\Anima
+I:/Games/Switch\Indies\Aragami
+I:/Games/Switch\Indies\Artifact Adventure
+I:/Games/Switch\Indies\Assault Android
+I:/Games/Switch\Indies\Battle Planet
+I:/Games/Switch\Indies\Darkwood
+I:/Games/Switch\Indies\Dawn of Survivors
+I:/Games/Switch\Indies\Dead in Vinland
+I:/Games/Switch\Indies\Desktop Rugby
+I:/Games/Switch\Indies\Don't Starve
+I:/Games/Switch\Indies\Dust An Elysian Trail
+I:/Games/Switch\Indies\Earthlock
+I:/Games/Switch\Indies\Elli
+I:/Games/Switch\Indies\Eternal Edge
+I:/Games/Switch\Indies\Evoland
+I:/Games/Switch\Indies\Fall of Light
+I:/Games/Switch\Indies\FAR
+I:/Games/Switch\Indies\Fe
+I:/Games/Switch\Indies\For the King
+I:/Games/Switch\Indies\Full Metal Furies
+I:/Games/Switch\Indies\Giga Wrecker
+I:/Games/Switch\Indies\Golf Story
+I:/Games/Switch\Indies\Heroine Anthem Zero
+I:/Games/Switch\Indies\Hyperforma
+I:/Games/Switch\Indies\ICEY
+I:/Games/Switch\Indies\Legrand Legacy
+I:/Games/Switch\Indies\Machiknights
+I:/Games/Switch\Indies\Mages of Mystralia
+I:/Games/Switch\Indies\Masquerada
+I:/Games/Switch\Indies\Masters of Anima
+I:/Games/Switch\Indies\Max
+I:/Games/Switch\Indies\Mercenaries Wings
+I:/Games/Switch\Indies\My Friend Pedro
+I:/Games/Switch\Indies\Next Up Hero
+I:/Games/Switch\Indies\Owlboy
+I:/Games/Switch\Indies\Rabi-Ribi
+I:/Games/Switch\Indies\Rise and Shine
+I:/Games/Switch\Indies\Shadow Blade
+I:/Games/Switch\Indies\Sinner Sacrifice for Redemption
+I:/Games/Switch\Indies\Strike Suit Zero
+I:/Games/Switch\Indies\The Flame In The Flood
+I:/Games/Switch\Indies\The Next Penelope
+I:/Games/Switch\Indies\Tyr
+I:/Games/Switch\Indies\Untitled Goose Game
+I:/Games/Switch\Indies\Witch and Hero
+I:/Games/Switch\Indies\Wonder Boy
+I:/Games/Switch\Indies\Worms
+I:/Games/Switch\Indies
+I:/Games/Switch\Metroidvania\Aegis Defenders
+I:/Games/Switch\Metroidvania\Azure Striker
+I:/Games/Switch\Metroidvania\Black Future
+I:/Games/Switch\Metroidvania\Bloodstained
+I:/Games/Switch\Metroidvania\Chasm
+I:/Games/Switch\Metroidvania\Chroma Squad
+I:/Games/Switch\Metroidvania\Dark Devotion
+I:/Games/Switch\Metroidvania\Dead Cells
+I:/Games/Switch\Metroidvania\Dead or School
+I:/Games/Switch\Metroidvania\Enter The Gungeon
+I:/Games/Switch\Metroidvania\Graveyard Keeper
+I:/Games/Switch\Metroidvania\Gunvolt
+I:/Games/Switch\Metroidvania\Hotline Miami
+I:/Games/Switch\Metroidvania\Hyper Light Drifter
+I:/Games/Switch\Metroidvania\I Am The Hero
+I:/Games/Switch\Metroidvania\Iconoclasts
+I:/Games/Switch\Metroidvania\Katana Zero
+I:/Games/Switch\Metroidvania\Mononoke Slashdown
+I:/Games/Switch\Metroidvania\Moon Hunters
+I:/Games/Switch\Metroidvania\Moonlighter
+I:/Games/Switch\Metroidvania\Rad Rogers
+I:/Games/Switch\Metroidvania\Ringo Ishikawa
+I:/Games/Switch\Metroidvania\River City Girls
+I:/Games/Switch\Metroidvania\Skybolt Zack
+I:/Games/Switch\Metroidvania\Stay Cool Kobayashi
+I:/Games/Switch\Metroidvania\The Messenger
+I:/Games/Switch\Metroidvania\Timespinner
+I:/Games/Switch\Metroidvania\Wizard of Legend
+I:/Games/Switch\Metroidvania
+I:/Games/Switch\Platform\Bloodstained
+I:/Games/Switch\Platform\Bubsy
+I:/Games/Switch\Platform\Cat Quest\Cat Quest
+I:/Games/Switch\Platform\Cat Quest\Cat Quest II
+I:/Games/Switch\Platform\Cat Quest
+I:/Games/Switch\Platform\Code of Princess
+I:/Games/Switch\Platform\Dragon Marked For Death
+I:/Games/Switch\Platform\Flan
+I:/Games/Switch\Platform\Furwind
+I:/Games/Switch\Platform\Ghost Parade
+I:/Games/Switch\Platform\Hollow Knight
+I:/Games/Switch\Platform\Ice Age
+I:/Games/Switch\Platform\Monster Boy
+I:/Games/Switch\Platform\New Super Lucky's Tale
+I:/Games/Switch\Platform\Ori
+I:/Games/Switch\Platform\Trine
+I:/Games/Switch\Platform
+I:/Games/Switch\RPG\Alliance Alive
+I:/Games/Switch\RPG\Atelier\Atelier Arland
+I:/Games/Switch\RPG\Atelier\Atelier Ayesha
+I:/Games/Switch\RPG\Atelier\Atelier Escha
+I:/Games/Switch\RPG\Atelier\Atelier Lulua
+I:/Games/Switch\RPG\Atelier\Atelier Lydie & Suelle
+I:/Games/Switch\RPG\Atelier\Atelier Meruru
+I:/Games/Switch\RPG\Atelier\Atelier Nelke
+I:/Games/Switch\RPG\Atelier\Atelier Ryza
+I:/Games/Switch\RPG\Atelier\Atelier Shallie
+I:/Games/Switch\RPG\Atelier
+I:/Games/Switch\RPG\Crashlands
+I:/Games/Switch\RPG\Dark Souls
+I:/Games/Switch\RPG\Darkest Dungeon
+I:/Games/Switch\RPG\Digimon
+I:/Games/Switch\RPG\Dragon Quest XI
+I:/Games/Switch\RPG\Dragons Dogma
+I:/Games/Switch\RPG\Fatal Bullet
+I:/Games/Switch\RPG\Final Fantasy\FF IX
+I:/Games/Switch\RPG\Final Fantasy\FF VIII
+I:/Games/Switch\RPG\Final Fantasy\FF XII
+I:/Games/Switch\RPG\Final Fantasy
+I:/Games/Switch\RPG\I am Setsuna
+I:/Games/Switch\RPG\Labyrinth of Refrain
+I:/Games/Switch\RPG\Little Town
+I:/Games/Switch\RPG\Lost Sphere
+I:/Games/Switch\RPG\Mirage Sessions
+I:/Games/Switch\RPG\Mistover
+I:/Games/Switch\RPG\Ni no Kuni
+I:/Games/Switch\RPG\Octopath
+I:/Games/Switch\RPG\Pokemon
+I:/Games/Switch\RPG\Shining Resonance
+I:/Games/Switch\RPG\Star Ocean
+I:/Games/Switch\RPG\Star Wars\Jedi Knight II
+I:/Games/Switch\RPG\Star Wars
+I:/Games/Switch\RPG\Stranded Sails
+I:/Games/Switch\RPG\Sword Art Online
+I:/Games/Switch\RPG\Tales
+I:/Games/Switch\RPG\The Caligula Effect
+I:/Games/Switch\RPG\The Last Remnant
+I:/Games/Switch\RPG\The Witcher III
+I:/Games/Switch\RPG\Vampyr
+I:/Games/Switch\RPG\WoFF
+I:/Games/Switch\RPG\World Ends With You
+I:/Games/Switch\RPG\Xenoblade Chronicles 2
+I:/Games/Switch\RPG\Yomawari
+I:/Games/Switch\RPG\Ys
+I:/Games/Switch\RPG\Zelda\Breath of The Wild
+I:/Games/Switch\RPG\Zelda\Link's Awakening
+I:/Games/Switch\RPG\Zelda
+I:/Games/Switch\RPG
+I:/Games/Switch\SOL\Doraemon
+I:/Games/Switch\SOL\Dragon Quest Builders
+I:/Games/Switch\SOL\Dragon Quest Builders 2
+I:/Games/Switch\SOL\Harvest Moon
+I:/Games/Switch\SOL\Little Dragons Cafe
+I:/Games/Switch\SOL\Little Friends
+I:/Games/Switch\SOL\My Time at Portia
+I:/Games/Switch\SOL\Rune Factory 4
+I:/Games/Switch\SOL\Stardew Valley
+I:/Games/Switch\SOL\Yonder The Cloud Catcher
+I:/Games/Switch\SOL
+I:/Games/Switch\Strategy\Armello
+I:/Games/Switch\Strategy\Bad North
+I:/Games/Switch\Strategy\Disgaea
+I:/Games/Switch\Strategy\Fallen Legion
+I:/Games/Switch\Strategy\Fear Effect Sedna
+I:/Games/Switch\Strategy\Fell Seal
+I:/Games/Switch\Strategy\Fire Emblem
+I:/Games/Switch\Strategy\God Wars
+I:/Games/Switch\Strategy\Hard West
+I:/Games/Switch\Strategy\Into the Breach
+I:/Games/Switch\Strategy\LoTR
+I:/Games/Switch\Strategy\Lovecraft
+I:/Games/Switch\Strategy\Mario + Rabbids
+I:/Games/Switch\Strategy\Mutant Year Zero
+I:/Games/Switch\Strategy\Narcos
+I:/Games/Switch\Strategy\Northgard
+I:/Games/Switch\Strategy\Phantom Doctrine
+I:/Games/Switch\Strategy\Regalia
+I:/Games/Switch\Strategy\Sid Meier's
+I:/Games/Switch\Strategy\Spaceland
+I:/Games/Switch\Strategy\Super Dungeon Tactics
+I:/Games/Switch\Strategy\Thief of Thieves
+I:/Games/Switch\Strategy\Thronebreaker
+I:/Games/Switch\Strategy\Tiny Metal\Tiny Metal
+I:/Games/Switch\Strategy\Tiny Metal\Tiny Metal 2
+I:/Games/Switch\Strategy\Tiny Metal
+I:/Games/Switch\Strategy\Tiny Troopers
+I:/Games/Switch\Strategy\Valkyria Chronicles
+I:/Games/Switch\Strategy\Vanguard
+I:/Games/Switch\Strategy\Wargroove
+I:/Games/Switch\Strategy\Wartech
+I:/Games/Switch\Strategy\Wasteland 2
+I:/Games/Switch\Strategy\Yu-Gi-Oh
+I:/Games/Switch\Strategy
+I:/Games/Switch\Table Top\Carcassonne
+I:/Games/Switch\Table Top\Catan
+I:/Games/Switch\Table Top\Chess
+I:/Games/Switch\Table Top\Civilization
+I:/Games/Switch\Table Top\Clue
+I:/Games/Switch\Table Top\Monopoly
+I:/Games/Switch\Table Top\Munchkin
+I:/Games/Switch\Table Top\Pandemic
+I:/Games/Switch\Table Top\Risk
+I:/Games/Switch\Table Top
+I:/Games/Switch\Vehicle\BlazeRush
+I:/Games/Switch\Vehicle\Cell Damage
+I:/Games/Switch\Vehicle\CTR
+I:/Games/Switch\Vehicle\Everspace
+I:/Games/Switch\Vehicle\Fast RMX
+I:/Games/Switch\Vehicle\Garfield
+I:/Games/Switch\Vehicle\Grip
+I:/Games/Switch\Vehicle\Meow Motors
+I:/Games/Switch\Vehicle\Redout
+I:/Games/Switch\Vehicle\Rocket League
+I:/Games/Switch\Vehicle\Starlink
+I:/Games/Switch\Vehicle\Team Sonic Racing
+I:/Games/Switch\Vehicle\Xenon Racer
+I:/Games/Switch\Vehicle
+I:/Games/Switch\Visual Novel\Ace Attorney
+I:/Games/Switch\Visual Novel\AI
+I:/Games/Switch\Visual Novel\Batman
+I:/Games/Switch\Visual Novel\Blacksad
+I:/Games/Switch\Visual Novel\Call of Cthulhu
+I:/Games/Switch\Visual Novel\Clannad
+I:/Games/Switch\Visual Novel\Close to The Sun
+I:/Games/Switch\Visual Novel\Death Mark
+I:/Games/Switch\Visual Novel\Ethan Carter
+I:/Games/Switch\Visual Novel\Fault
+I:/Games/Switch\Visual Novel\Gaokao
+I:/Games/Switch\Visual Novel\Grisaia
+I:/Games/Switch\Visual Novel\Happiness She is Next To
+I:/Games/Switch\Visual Novel\If My Heart Had Wings
+I:/Games/Switch\Visual Novel\JJ Macfield
+I:/Games/Switch\Visual Novel\Kotodama
+I:/Games/Switch\Visual Novel\Layton
+I:/Games/Switch\Visual Novel\Library Party
+I:/Games/Switch\Visual Novel\Memories Off
+I:/Games/Switch\Visual Novel\NekoPara
+I:/Games/Switch\Visual Novel\Our World is Ended
+I:/Games/Switch\Visual Novel\Pantsu Hunter
+I:/Games/Switch\Visual Novel\Planetarian
+I:/Games/Switch\Visual Novel\Raging Loop
+I:/Games/Switch\Visual Novel\Re Master
+I:/Games/Switch\Visual Novel\Robotics Note
+I:/Games/Switch\Visual Novel\Root Letter
+I:/Games/Switch\Visual Novel\Spice and Wolf
+I:/Games/Switch\Visual Novel\Spirit Hunter
+I:/Games/Switch\Visual Novel\State of Mind
+I:/Games/Switch\Visual Novel\Steins Gate
+I:/Games/Switch\Visual Novel\Summer Pockets
+I:/Games/Switch\Visual Novel\Syberia
+I:/Games/Switch\Visual Novel\The Raven
+I:/Games/Switch\Visual Novel\Tokyo Dark
+I:/Games/Switch\Visual Novel\Tokyo School Life
+I:/Games/Switch\Visual Novel\Training Diary
+I:/Games/Switch\Visual Novel\VA-11 Hall-A
+I:/Games/Switch\Visual Novel\WILL
+I:/Games/Switch\Visual Novel\Worldend Syndrome
+I:/Games/Switch\Visual Novel\Yu No
+I:/Games/Switch\Visual Novel
