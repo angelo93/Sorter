@@ -96,16 +96,14 @@ def move_files(root_path, split_char = '.', index = -1, organize = False, by_ext
 
 def write_txt_list(list_name, file_name):
   """ Record elements in a given list to a text file for reference. """
-  
-  save_path = os.getcwd() + '\\logs'
-
   def make_logs_dir(file_name):
     """ Make the folder to hold text files. """
-    
     try:
       os.mkdir(save_path)
     except FileExistsError:
       print('Folder for lists already exists, proceeding to write {}'.format(file_name))
+  
+  save_path = os.getcwd() + '\\logs'
 
   # Create the complete path name for the text file.
   complete_name = os.path.join(save_path, file_name)

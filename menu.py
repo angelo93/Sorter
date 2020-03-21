@@ -191,8 +191,6 @@ class MainMenu():
       modules.move_files(self.root)
     else:
       modules.move_files(self.root, self.split_char, 0, by_ext= False)
-      # modules.org_by_alpha(self.root)
-
     print('-' * 100)
   
   def option_five(self):
