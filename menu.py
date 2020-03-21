@@ -174,20 +174,25 @@ class MainMenu():
 
     while choice not in valid:
       choice = input('That is not a valid option, please try again: ')
-    if choice == '1':
-      modules.move_files(self.root)
-    if choice == '2':
-      modules.move_files(self.root, self.split_char, 0)
-
+    
     org_dirs = input('Would you like to organize the directories into alphabetical folders? (Y/N): ').upper()
-
+    
     while org_dirs != 'Y' and org_dirs != 'N':
       org_dirs = input('Please press "Y" or "N" to organize directories into alphabetical folders: ').upper()
-
     if org_dirs == 'Y':
       print('It is recommended that you delete all current empty directories to avoid errors.')
       modules.del_empty_dirs(self.root)
-      modules.org_by_alpha(self.root)
+    
+    if choice == '1' and org_dirs == 'Y':
+      modules.move_files(self.root, organize=True)
+    elif choice == '2' and org_dirs == 'Y':
+      modules.move_files(self.root, self.split_char, 0, organize=True, by_ext= False)
+    elif choice == '1' and org_dirs == 'N':
+      modules.move_files(self.root)
+    else:
+      modules.move_files(self.root, self.split_char, 0, by_ext= False)
+      # modules.org_by_alpha(self.root)
+
     print('-' * 100)
   
   def option_five(self):

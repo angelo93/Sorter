@@ -23,25 +23,6 @@ def create_directory(root_path, list_type):
       else:
         print("Creation of {} directory failed.".format(item))
 
-def create_alpha_dirs(root_path):
-  ''' Creates alphabetical directories to organize subdirectories. 
-      /A --> /A/A_dir
-         --> /A/Another_dir. '''
-
-  alpha_dirs = [
-    root_path + '/' + '#',
-    root_path + '/' + 'Other'
-  ]
-
-  for letter in string.ascii_uppercase:
-    alpha_dirs.append(root_path + '/' + letter)
-
-  for dirname in alpha_dirs:
-    try:
-      os.mkdir(dirname)
-    except FileExistsError:
-      print('The directory "{}" already exists.'.format(dirname))
-
 def del_empty_dirs(root_path):
   """ Delete all empty directories and subdirectories
       root_path = path of root folder passed in from menu instance. """
@@ -71,47 +52,42 @@ def del_empty_dirs(root_path):
   else:
     print('Empty directories will not be deleted.')
 
-def org_by_alpha(root_path):
-  ''' Organize subdirectories alphabetically. '''
-
-  create_alpha_dirs(root_path)
-
-  for dirpath, dirnames, _ in os.walk(root_path):
-    dirnames[:] = [
-      d for d in dirnames if not d.startswith('.') and 
-      d[0] not in string.ascii_uppercase and 
-      d[0] != '#' and 
-      d[0] != 'Other'
-    ]
-    for dirname in dirnames:
-      source = os.path.join(dirpath, dirname).replace('\\', '/')
-      if dirname[0].isalpha():
-        destination = os.path.join(dirpath.replace('\\', '/'), dirname[0].upper(), dirname)
-      elif dirname[0].isdigit():
-        destination = os.path.join(dirpath.replace('\\', '/'), '#', dirname)
-      else:
-        destination = os.path.join(dirpath.replace('\\', '/'), 'Other', dirname)
-      try:
-        if os.path.isdir(destination):
-          shutil.copytree(source, destination, dirs_exist_ok=True)
-          shutil.rmtree(source)
-        else:
-          shutil.move(source, destination)
-      except FileNotFoundError:
-        print('The destination directory does not exist.')
- 
-def move_files(root_path, split_char = '.', index = -1):
-  """ Move all files found recursivley inside the root path. 
-      root_path = root directory. """
+def move_files(root_path, split_char = '.', index = -1, organize = False, by_ext = True):
+  parent = ''
+  
+  dirs_to_skip = [char for char in string.ascii_uppercase] 
+  dirs_to_skip.append('#')
+  dirs_to_skip.append('Other')
 
   for dirpath, _, filenames in os.walk(root_path):
-    # Skip hidden files.
-    filenames = [f for f in filenames if not f[0] == '.']
+    # Skip hidden directories.
+    if dirpath.split('\\')[-1].startswith('.') or dirpath.split('\\')[-1] in dirs_to_skip:
+      continue
     for name in filenames:
+      # Skip hidden files.  
+      if name.startswith('.'):
+        continue
+      if organize and not by_ext:
+        if name[0].isdigit():
+          parent = '#'
+        elif name[0].isalpha():
+          parent = name[0].upper()
+        else:
+          parent = 'Other'
+      elif organize and by_ext:
+        if name.split(split_char)[index][0].isdigit():
+          parent = '#'
+          print(parent)
+        elif name.split(split_char)[index][0].isalpha():
+          parent = name.split(split_char)[index][0].upper()
+          print(parent)
+        else:
+          parent = 'Other'
       current_file = name.split(split_char)[index].strip() # If split_char == '.', file's extension otherwise file's name
-      source = os.path.join(dirpath, name) # Source path of current file.
-      destination = os.path.join(root_path, current_file, name)
+      source = os.path.join(dirpath, name).replace('\\', '/') # Source path of current file.
+      destination = os.path.join(root_path, parent, current_file, name).replace('\\', '/')
       try:
+        os.makedirs(os.path.join(root_path, parent, current_file), exist_ok=True)
         shutil.move(source, destination)
       except FileExistsError:
         print('The file "{}" already exists.'.format(destination))

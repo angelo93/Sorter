@@ -1,34 +1,9 @@
-I:/Games/Switch\#\8-BIT ADVENTURE STEINS;GATE
-I:/Games/Switch\#\8-BIT YU-NO'S GREAT ADVENTURE
-I:/Games/Switch\#
-I:/Games/Switch\A
-I:/Games/Switch\B
-I:/Games/Switch\C
-I:/Games/Switch\D
-I:/Games/Switch\E
-I:/Games/Switch\F\fault - milestone one
-I:/Games/Switch\F
-I:/Games/Switch\G
-I:/Games/Switch\H
-I:/Games/Switch\I
-I:/Games/Switch\J
-I:/Games/Switch\K
-I:/Games/Switch\L
-I:/Games/Switch\M
-I:/Games/Switch\N
-I:/Games/Switch\O
-I:/Games/Switch\Other
-I:/Games/Switch\P\planetarian
-I:/Games/Switch\P
-I:/Games/Switch\Q
-I:/Games/Switch\R
-I:/Games/Switch\S
-I:/Games/Switch\T
-I:/Games/Switch\U
-I:/Games/Switch\V
-I:/Games/Switch\W
-I:/Games/Switch\X
-I:/Games/Switch\Y
-I:/Games/Switch\Z
-I:/Games/Switch\ペ\ペルソナ５ スクランブル ザ ファントム ストライカーズ
-I:/Games/Switch\ペ
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\J\jpg
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\J
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\M\mp3
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\M\mp4
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\M
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\P\py
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\P
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\T\txt
+C:\Users\Angel\Desktop\Projects\Main\Sorter\test\T
