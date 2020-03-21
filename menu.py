@@ -21,9 +21,11 @@ class MainMenu():
     self.files_txt = 'file_list.txt' # Filename for creating a text file of all found files.
     self.exts_txt = 'ext_list.txt' # Filename for creating a text file of all found extensions.
     self.file_name_txt = 'file_name_list.txt' # Filename for creating a text file of all found file names.
+    self.dup_files_txt = 'dup_files_list.txt'
     self.ext_list = [] # List to hold all extensions.
     self.file_list = [] # List to hold all found files.
     self.file_name_list = [] # List to hold all found file names.
+    self.dup_list = [] # List to record all duplicate files found.
     self.passes = 0 # Simple variable to check how many times the user has selected an option.
     self.split_char = '' # Variable to specify which character to split file names on.
 
@@ -132,10 +134,11 @@ class MainMenu():
     print('Press 1 to create a file listing all extensions.')
     print('Press 2 to create a file listing all files.')
     print('Press 3 to create a file listing all file names.')
-    print('Press 4 to create all files.')
+    print('Press 4 to create a file listing all duplicate files.')
+    print('Press 5 to create all files.')
     
     choice = input('Please select an option: ')
-    valid = ['1', '2', '3', '4']
+    valid = ['1', '2', '3', '4', '5']
 
     while choice not in valid:
       choice = input('That is not a valid option, please try again: ')
@@ -149,10 +152,14 @@ class MainMenu():
       # Write list of found extensions to txt file.
       modules.write_txt_list(self.file_name_list, self.file_name_txt)
     if choice == '4':
+      # Write list of found duplicate files to txt file.
+      modules.write_txt_list(self.dup_list, self.dup_files_txt)
+    if choice == '5':
       # Write all files from above options
       modules.write_txt_list(self.file_list, self.files_txt)
       modules.write_txt_list(self.ext_list, self.exts_txt)
       modules.write_txt_list(self.file_name_list, self.file_name_txt)
+      modules.write_txt_list(self.dup_list, self.dup_files_txt)
     print('-' * 100)
 
   def option_four(self):
@@ -227,11 +234,13 @@ class MainMenu():
           if name.split('.')[-1] not in self.ext_list:
             self.ext_list.append(name.split('.')[-1])
           # Check to see if the generated file name exists in the list of file names.
-          if name.split(self.split_char)[0] not in self.file_name_list:
+          if name.split(self.split_char)[0].strip() not in self.file_name_list:
             self.file_name_list.append(name.split(self.split_char)[0].strip())
           # Check to see if the file already exists in the list of found files.
           if name not in self.file_list:
             self.file_list.append(name)
+          else:
+            self.dup_list.append(name)
     
     self.file_name_list = sorted(self.file_name_list)
     self.file_list = sorted(self.file_list)
