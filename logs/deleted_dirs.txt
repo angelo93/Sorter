@@ -1,9 +1,0 @@
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\J\jpg
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\J
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\M\mp3
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\M\mp4
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\M
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\P\py
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\P
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\T\txt
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\T
