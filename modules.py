@@ -5,24 +5,6 @@ import os
 import shutil
 import string
 
-def create_directory(root_path, list_type):
-  ''' Create a directory for all files either by file name or extension and returns a dictionary.
-      root_path = root passed in from menu instance.
-      list_type = list of extensions or file names
-        1. E.g. file_name.txt = txt 
-        2. E.g. this file name [90932u4] = this file name (split on "["). '''
-
-  for item in list_type:
-    new_dir_path = os.path.join(root_path, item)
-    try:
-      os.mkdir(new_dir_path)
-      print('Directory "{}" created.'.format(item))
-    except:
-      if os.path.isdir(new_dir_path):
-        print('Directory "{}" already exists.'.format(item))
-      else:
-        print("Creation of {} directory failed.".format(item))
-
 def del_empty_dirs(root_path):
   """ Delete all empty directories and subdirectories
       root_path = path of root folder passed in from menu instance. """
