@@ -1,8 +1,0 @@
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\2 levels down
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_1
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_2
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_3
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_4
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\test_5
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\walk_1
-C:\Users\Angel\Desktop\Projects\Main\Sorter\test\walk_2

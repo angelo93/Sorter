@@ -21,9 +21,11 @@ class MainMenu():
     self.files_txt = 'file_list.txt' # Filename for creating a text file of all found files.
     self.exts_txt = 'ext_list.txt' # Filename for creating a text file of all found extensions.
     self.file_name_txt = 'file_name_list.txt' # Filename for creating a text file of all found file names.
+    self.dup_files_txt = 'dup_files_list.txt'
     self.ext_list = [] # List to hold all extensions.
     self.file_list = [] # List to hold all found files.
     self.file_name_list = [] # List to hold all found file names.
+    self.dup_list = [] # List to record all duplicate files found.
     self.passes = 0 # Simple variable to check how many times the user has selected an option.
     self.split_char = '' # Variable to specify which character to split file names on.
 
@@ -33,13 +35,12 @@ class MainMenu():
   def show_menu(self):
     ''' Show main options to user. '''
 
-    print('Press 1 to create directories.')
-    print('Press 2 to create logs.')
-    print('Press 3 to delete all empty directories.')
-    print('Press 4 to move files to corresponding directories.')
-    print('Press 5 to change root directory.')
-    print('press 6 to re-generate file and extensions lists.')
-    print('Press 7 to terminate program.')
+    print('Press 1 to create logs.')
+    print('Press 2 to delete all empty directories.')
+    print('Press 3 to organize files.')
+    print('Press 4 to change root directory.')
+    print('press 5 to re-generate file and extensions lists.')
+    print('Press "Q" to terminate program.')
     print('-' * 100)
 
   def get_opt(self):
@@ -54,7 +55,7 @@ class MainMenu():
       print('-' * 100)
 
     # List of valid inputs
-    valid = ['1', '2', '3', '4', '5', '6', '7', 'M']
+    valid = ['1', '2', '3', '4', '5', '6', 'M']
 
     # If option is not a valid option, ask user again.
     while option not in valid:
@@ -71,28 +72,24 @@ class MainMenu():
 
     if option == '1':
       self.clear_screen()
-      # Create directories of a particular type
+      # Generate logs.
       self.option_one()
     if option == '2':
-      self.clear_screen()
-      # Write files using generated lists
-      self.option_two()
-    if option == '3':
       self.clear_screen()
       # Delete all empty directories and subdirectories.
       modules.del_empty_dirs(self.root)
       print('-' * 100)
-    if option == '4':
+    if option == '3':
       self.clear_screen()
       # Move found files to directory corresponding to their extension.
+      self.option_three()
+    if option == '4':
+      self.clear_screen()
       self.option_four()
     if option == '5':
       self.clear_screen()
-      self.option_five()
-    if option == '6':
-      self.clear_screen()
       self.create_lists()
-    if option == '7':
+    if option == 'Q':
       self.clear_screen()
       print('Terminating program')
       sys.exit()
@@ -101,41 +98,17 @@ class MainMenu():
       self.show_menu()
 
   def option_one(self):
-    ''' Function to decide what kind of directories to create. '''
-
-    print('Press 1 to create directories for found extensions')
-    print('Press 2 to create directories for found file names')
-    
-    choice = input('Please select an option: ')
-    valid = ['1', '2']
-
-    while choice not in valid:
-      choice = input('That is not a valid option, please try again: ')
-    if choice == '1':
-      try:
-        #Create directories for each extension type in ext_list.
-        modules.create_directory(self.root, self.ext_list)
-      except:
-        print('Could not create directories')
-    if choice == '2':
-      try:
-        #Create directories for each file name in file_name_list.
-        modules.create_directory(self.root, self.file_name_list)
-      except:
-        print('Could not create directories')
-    print('-' * 100)
-
-  def option_two(self):
     ''' Create a file listing either all
           extensions, files and or file names. '''
 
     print('Press 1 to create a file listing all extensions.')
     print('Press 2 to create a file listing all files.')
     print('Press 3 to create a file listing all file names.')
-    print('Press 4 to create all files.')
+    print('Press 4 to create a file listing all duplicate files.')
+    print('Press 5 to create all files.')
     
     choice = input('Please select an option: ')
-    valid = ['1', '2', '3', '4']
+    valid = ['1', '2', '3', '4', '5']
 
     while choice not in valid:
       choice = input('That is not a valid option, please try again: ')
@@ -149,13 +122,17 @@ class MainMenu():
       # Write list of found extensions to txt file.
       modules.write_txt_list(self.file_name_list, self.file_name_txt)
     if choice == '4':
+      # Write list of found duplicate files to txt file.
+      modules.write_txt_list(self.dup_list, self.dup_files_txt)
+    if choice == '5':
       # Write all files from above options
       modules.write_txt_list(self.file_list, self.files_txt)
       modules.write_txt_list(self.ext_list, self.exts_txt)
       modules.write_txt_list(self.file_name_list, self.file_name_txt)
+      modules.write_txt_list(self.dup_list, self.dup_files_txt)
     print('-' * 100)
 
-  def option_four(self):
+  def option_three(self):
     ''' Decide whether user is moving files based on their extensions or names
         and would also like to organize directories into alphabetical folders. '''
 
@@ -167,23 +144,26 @@ class MainMenu():
 
     while choice not in valid:
       choice = input('That is not a valid option, please try again: ')
-    if choice == '1':
-      modules.move_files(self.root)
-    if choice == '2':
-      modules.move_files(self.root, self.split_char, 0)
-
+    
     org_dirs = input('Would you like to organize the directories into alphabetical folders? (Y/N): ').upper()
-
+    
     while org_dirs != 'Y' and org_dirs != 'N':
       org_dirs = input('Please press "Y" or "N" to organize directories into alphabetical folders: ').upper()
-
     if org_dirs == 'Y':
       print('It is recommended that you delete all current empty directories to avoid errors.')
       modules.del_empty_dirs(self.root)
-      modules.org_by_alpha(self.root)
+    
+    if choice == '1' and org_dirs == 'Y':
+      modules.move_files(self.root, organize=True)
+    elif choice == '2' and org_dirs == 'Y':
+      modules.move_files(self.root, self.split_char, 0, organize=True, by_ext= False)
+    elif choice == '1' and org_dirs == 'N':
+      modules.move_files(self.root)
+    else:
+      modules.move_files(self.root, self.split_char, 0, by_ext= False)
     print('-' * 100)
   
-  def option_five(self):
+  def option_four(self):
     ''' Change root directory path and reset file, extension and file name lists.'''
 
     # Get new path from user.
@@ -227,11 +207,13 @@ class MainMenu():
           if name.split('.')[-1] not in self.ext_list:
             self.ext_list.append(name.split('.')[-1])
           # Check to see if the generated file name exists in the list of file names.
-          if name.split(self.split_char)[0] not in self.file_name_list:
+          if name.split(self.split_char)[0].strip() not in self.file_name_list:
             self.file_name_list.append(name.split(self.split_char)[0].strip())
           # Check to see if the file already exists in the list of found files.
           if name not in self.file_list:
             self.file_list.append(name)
+          else:
+            self.dup_list.append(name)
     
     self.file_name_list = sorted(self.file_name_list)
     self.file_list = sorted(self.file_list)
