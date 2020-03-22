@@ -55,7 +55,7 @@ class MainMenu():
       print('-' * 100)
 
     # List of valid inputs
-    valid = ['1', '2', '3', '4', '5', '6', 'M']
+    valid = ['1', '2', '3', '4', '5', 'Q', 'M']
 
     # If option is not a valid option, ask user again.
     while option not in valid:
