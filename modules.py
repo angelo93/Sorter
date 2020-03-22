@@ -77,10 +77,8 @@ def move_files(root_path, split_char = '.', index = -1, organize = False, by_ext
       elif organize and by_ext:
         if name.split(split_char)[index][0].isdigit():
           parent = '#'
-          print(parent)
         elif name.split(split_char)[index][0].isalpha():
           parent = name.split(split_char)[index][0].upper()
-          print(parent)
         else:
           parent = 'Other'
       current_file = name.split(split_char)[index].strip() # If split_char == '.', file's extension otherwise file's name
