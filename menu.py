@@ -37,10 +37,10 @@ class MainMenu():
 
     print('Press 1 to create logs.')
     print('Press 2 to delete all empty directories.')
-    print('Press 3 to move files to corresponding directories.')
+    print('Press 3 to organize files.')
     print('Press 4 to change root directory.')
     print('press 5 to re-generate file and extensions lists.')
-    print('Press 6 to terminate program.')
+    print('Press "Q" to terminate program.')
     print('-' * 100)
 
   def get_opt(self):
@@ -89,7 +89,7 @@ class MainMenu():
     if option == '5':
       self.clear_screen()
       self.create_lists()
-    if option == '6':
+    if option == 'Q':
       self.clear_screen()
       print('Terminating program')
       sys.exit()
