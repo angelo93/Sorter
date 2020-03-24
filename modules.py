@@ -49,23 +49,29 @@ def move_files(root_path, split_char = '.', index = -1, organize = False, by_ext
       # Skip hidden files.  
       if name.startswith('.'):
         continue
+      # If organizing by file name, set parent to...
       if organize and not by_ext:
-        if name[0].isdigit():
+        if name[0].isdigit(): # Check to see if file name starts with a number.
           parent = '#'
-        elif name[0].isalpha():
+        elif name[0].isalpha(): # Check to see if file name starts with a letter.
           parent = name[0].upper()
-        else:
+        else: # If file name doesn't start with a number or a letter.
           parent = 'Other'
+      # If organizing by file extension, set parent to...
       elif organize and by_ext:
-        if name.split(split_char)[index][0].isdigit():
+        if name.split(split_char)[index][0].isdigit(): # Check to see if extension starts with a number.
           parent = '#'
-        elif name.split(split_char)[index][0].isalpha():
+        elif name.split(split_char)[index][0].isalpha(): # Check to see if extension starts with a letter.
           parent = name.split(split_char)[index][0].upper()
-        else:
+        else: # If extension starts with anything else.
           parent = 'Other'
       current_file = name.split(split_char)[index].strip() # If split_char == '.', file's extension otherwise file's name
       source = os.path.join(dirpath, name).replace('\\', '/') # Source path of current file.
       destination = os.path.join(root_path, parent, current_file, name).replace('\\', '/')
+      # Check to see if the file needs to be moved, if not continue to next file.
+      if source == destination:
+        continue
+      # Makes the necessary directories for the destination. If they already exist, move the file.
       try:
         os.makedirs(os.path.join(root_path, parent, current_file), exist_ok=True)
         shutil.move(source, destination)
