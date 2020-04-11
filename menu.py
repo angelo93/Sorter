@@ -42,6 +42,8 @@ class MainMenu():
     def show_menu(self):
         ''' Show main options to user. '''
 
+        self.passes = 0
+
         print('Press 1 to create logs.')
         print('Press 2 to delete all empty directories.')
         print('Press 3 to organize files.')
@@ -117,9 +119,10 @@ class MainMenu():
         print('Press 3 to create a file listing all file names.')
         print('Press 4 to create a file listing all duplicate files.')
         print('Press 5 to create all files.')
+        print('Press "Q" to go back to Main Menu.')
 
-        choice = input('Please select an option: ')
-        valid = ['1', '2', '3', '4', '5']
+        choice = input('Please select an option: ').upper()
+        valid = ['1', '2', '3', '4', '5', 'Q']
 
         while choice not in valid:
             choice = input('That is not a valid option, please try again: ')
@@ -141,6 +144,11 @@ class MainMenu():
             modules.write_txt_list(self.ext_list, self.exts_txt)
             modules.write_txt_list(self.file_name_list, self.file_name_txt)
             modules.write_txt_list(self.dup_list, self.dup_files_txt)
+        if choice == 'Q':
+            self.clear_screen()
+            self.show_menu()
+            return
+
         print('-' * 100)
 
     def option_three(self):
