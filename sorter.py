@@ -1,4 +1,4 @@
-''' Realizes and instance of the program. '''
+""" Realizes and instance of the program. """
 # Import required libraries
 import os
 import menu

@@ -1,8 +1,4 @@
 __pycache__/
 .vscode/
-<<<<<<< HEAD
-logs/
-=======
 logs/
 test/
->>>>>>> feature-rename-ext
