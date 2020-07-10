@@ -10,14 +10,19 @@ def del_empty_dirs(root_path):
     """ Delete all empty directories and subdirectories
         root_path = path of root folder passed in from menu instance. """
 
-    choice = input(
-        "Are you sure you want to find and delete all empty directories? (Y/N): "
-    ).upper()
+    def get_choice():
+        choice = input(
+            "Are you sure you want to find and delete all empty directories? (Y/N): "
+        ).upper()
+
+        while choice != "Y" and choice != "N":
+            choice = input('That is not a valid selection, please press "Y" or "N": ').upper()
+
+        return choice
+
+    choice = get_choice()
     deleted_dirs = []  # List to record deleted directories
     deleted_txt = "deleted_dirs.txt"  # Text file to view deleted directories
-
-    while choice != "Y" and choice != "N":
-        choice = input('That is not a valid selection, please press "Y" or "N": ').upper()
 
     if choice == "Y":
         for dirpath, dirnames, _ in os.walk(root_path, topdown=False):
@@ -48,7 +53,7 @@ def move_files(root_path, split_char=".", index=-1, organize=False, by_ext=True)
     dirs_to_skip.append("Other")
 
     for dirpath, _, filenames in os.walk(root_path):
-        # Skip hidden directories.
+        # Skip hidden directories & aformentioned dirs to skip.
         if dirpath.split("\\")[-1].startswith(".") or dirpath.split("\\")[-1] in dirs_to_skip:
             continue
         for name in filenames:
