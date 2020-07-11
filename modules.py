@@ -16,7 +16,8 @@ def del_empty_dirs(root_path):
         ).upper()
 
         while choice != "Y" and choice != "N":
-            choice = input('That is not a valid selection, please press "Y" or "N": ').upper()
+            choice = input(
+                'That is not a valid selection, please press "Y" or "N": ').upper()
 
         return choice
 
@@ -84,13 +85,15 @@ def move_files(root_path, split_char=".", index=-1, organize=False, by_ext=True)
             current_file = name.split(split_char)[index].strip()
             # Source path of current file.
             source = os.path.join(dirpath, name).replace("\\", "/")
-            destination = os.path.join(root_path, parent, current_file, name).replace("\\", "/")
+            destination = os.path.join(
+                root_path, parent, current_file, name).replace("\\", "/")
             # Check to see if the file needs to be moved, if not continue to next file.
             if source == destination:
                 continue
             # Makes the necessary directories for the destination. If they already exist, move the file.
             try:
-                os.makedirs(os.path.join(root_path, parent, current_file), exist_ok=True)
+                os.makedirs(os.path.join(root_path, parent,
+                                         current_file), exist_ok=True)
                 shutil.move(source, destination)
             except FileExistsError:
                 print('The file "{}" already exists.'.format(destination))
@@ -106,7 +109,8 @@ def write_txt_list(list_name, file_name):
         try:
             os.mkdir(save_path)
         except FileExistsError:
-            print("Folder for lists already exists, proceeding to write {}".format(file_name))
+            print(
+                "Folder for lists already exists, proceeding to write {}".format(file_name))
 
     save_path = os.getcwd() + "\\logs"
 
@@ -137,6 +141,7 @@ def rename_extension(root_path, old_ext, new_ext):
             temp[-1] = new_ext
             new_filename = ".".join(temp)
             try:
-                os.rename(os.path.join(root_path, filename), os.path.join(root_path, new_filename))
+                os.rename(os.path.join(root_path, filename),
+                          os.path.join(root_path, new_filename))
             except:
                 print(f"Unable to rename the extension of {filename}.")

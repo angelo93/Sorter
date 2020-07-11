@@ -126,6 +126,7 @@ class MainMenu():
 
         while choice not in valid:
             choice = input('That is not a valid option, please try again: ')
+
         if choice == '1':
             # Write list of files to a txt file.
             modules.write_txt_list(self.file_list, self.files_txt)
@@ -170,6 +171,7 @@ class MainMenu():
         while org_dirs != 'Y' and org_dirs != 'N':
             org_dirs = input(
                 'Please press "Y" or "N" to organize directories into alphabetical folders: ').upper()
+
         if org_dirs == 'Y':
             print(
                 'It is recommended that you delete all current empty directories to avoid errors.')
