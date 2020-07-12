@@ -5,12 +5,9 @@
 # root = os.getcwd() + "/test"
 # root_path = root.replace("\\", "/")
 
+file_one = "something[000][aj][v0].nsp"
+file_two = "test.txt"
 
-people = {
-    "1": {"name": "John", "age": "27", "sex": "Male"},
-    "2": {"name": "Marie", "age": "22", "sex": "Female"},
-    "3": {"name": "Luna", "age": "24", "sex": "Female", "married": "No"},
-}
+print(file_one.split("[")[-1].strip())
+print(file_two.split("[")[-1].strip())
 
-for file_name, file_info in people.items():
-    print(file_name + file_info["name"])

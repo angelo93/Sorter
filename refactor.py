@@ -36,6 +36,7 @@ def get_parent_dir_OBE(file_name, split_char, index):
 def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, by_ext=True):
     dirs_to_skip = []
     file_dictionary = {}
+    parent_dir = ""
 
     # Helper function to create list of dirs to skip.
     def get_dirs_to_skip():
@@ -51,8 +52,8 @@ def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, 
         # Skip hidden directories & aformentioned dirs to skip.
         if dirpath.split("\\")[-1].startswith(".") or dirpath.split("\\")[-1] in dirs_to_skip:
             continue
+
         for file_name in filenames:
-            parent_dir = ""
             # If split_char == '.', file's extension otherwise file's name
             current_file = file_name.split(split_char)[index].strip()
 

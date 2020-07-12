@@ -45,57 +45,103 @@ def del_empty_dirs(root_path):
         print("Empty directories will not be deleted.")
 
 
-def move_files(root_path, split_char=".", index=-1, organize=False, by_ext=True):
+def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, by_ext=True):
+    dirs_to_skip = []
+    file_dictionary = {}
+    parent_dir = ""
 
-    dirs_to_skip = [char for char in string.ascii_uppercase]
-    dirs_to_skip.append("#")
-    dirs_to_skip.append("Other")
+    # Helper function to create list of dirs to skip.
+    def get_dirs_to_skip():
+        dirs_to_skip = [char for char in string.ascii_uppercase]
+        dirs_to_skip.append("#")
+        dirs_to_skip.append("Other")
+
+        return dirs_to_skip
+
+    dirs_to_skip = get_dirs_to_skip()
 
     for dirpath, _, filenames in os.walk(root_path):
         # Skip hidden directories & aformentioned dirs to skip.
         if dirpath.split("\\")[-1].startswith(".") or dirpath.split("\\")[-1] in dirs_to_skip:
             continue
-        for name in filenames:
-            parent = ""
-            # Skip hidden files.
-            if name.startswith("."):
-                continue
-            # If organizing by file name, set parent to...
-            if organize and not by_ext:
-                # Check to see if file name starts with a number.
-                if name[0].isdigit():
-                    parent = "#"
-                # Check to see if file name starts with a letter.
-                elif name[0].isalpha():
-                    parent = name[0].upper()
-                else:  # If file name doesn't start with a number or a letter.
-                    parent = "Other"
-            # If organizing by file extension, set parent to...
-            elif organize and by_ext:
-                # Check to see if extension starts with a number.
-                if name.split(split_char)[index][0].isdigit():
-                    parent = "#"
-                # Check to see if extension starts with a letter.
-                elif name.split(split_char)[index][0].isalpha():
-                    parent = name.split(split_char)[index][0].upper()
-                else:  # If extension starts with anything else.
-                    parent = "Other"
+
+        for file_name in filenames:
             # If split_char == '.', file's extension otherwise file's name
-            current_file = name.split(split_char)[index].strip()
-            # Source path of current file.
-            source = os.path.join(dirpath, name).replace("\\", "/")
-            destination = os.path.join(root_path, parent, current_file, name).replace("\\", "/")
-            # Check to see if the file needs to be moved, if not continue to next file.
-            if source == destination:
+            current_file = file_name.split(split_char)[index].strip()
+
+            # Skip hidden files.
+            if file_name.startswith("."):
                 continue
-            # Makes the necessary directories for the destination. If they already exist, move the file.
-            try:
-                os.makedirs(os.path.join(root_path, parent, current_file), exist_ok=True)
-                shutil.move(source, destination)
-            except FileExistsError:
-                print('The file "{}" already exists.'.format(destination))
-            except FileNotFoundError:
-                print('Source "{}" does not exist'.format(source))
+
+            # If organizing by file name, set parent directory to...
+            if organize and not by_ext:
+                parent_dir = get_parent_dir_ONBE(file_name) + "\\" + current_file
+                destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
+
+            # If organizing by file extension, set parent directory to...
+            elif organize and by_ext:
+                parent_dir = get_parent_dir_OBE(file_name, split_char, index) + "\\" + current_file
+                destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
+
+            else:
+                parent_dir = current_file
+                destination = os.path.join(root_path, current_file, file_name).replace("\\", "/")
+
+            # Source path of current file.
+            source = os.path.join(dirpath, file_name).replace("\\", "/")
+
+            file_dictionary[file_name] = {
+                "parent_dir": parent_dir,
+                "source": source,
+                "destination": destination,
+            }
+
+    return file_dictionary
+
+
+def get_parent_dir_ONBE(file_name):
+    parent_dir = ""
+
+    # Check to see if file name starts with a number.
+    if file_name[0].isdigit():
+        parent_dir = "#"
+    # Check to see if file name starts with a letter.
+    elif file_name[0].isalpha():
+        parent_dir = file_name[0].upper()
+    else:  # If file name doesn't start with a number or a letter.
+        parent_dir = "Other"
+
+    return parent_dir
+
+
+def get_parent_dir_OBE(file_name, split_char, index):
+    parent_dir = ""
+
+    # Check to see if extension starts with a number.
+    if file_name.split(split_char)[index][0].isdigit():
+        parent_dir = "#"
+    # Check to see if extension starts with a letter.
+    elif file_name.split(split_char)[index][0].isalpha():
+        parent_dir = file_name.split(split_char)[index][0].upper()
+    else:  # If extension starts with anything else.
+        parent_dir = "Other"
+
+    return parent_dir
+
+
+def move_files(root_path, file_dictionary):
+    for _, file_info in file_dictionary.items():
+        # Check to see if the file needs to be moved, if not continue to next file.
+        if file_info["source"] == file_info["destination"]:
+            continue
+
+        try:
+            os.makedirs(os.path.join(root_path, file_info["parent_dir"]), exist_ok=True)
+            shutil.move(file_info["source"], file_info["destination"])
+        except FileExistsError:
+            print('The file "{}" already exists.'.format(file_info["destination"]))
+        except FileNotFoundError:
+            print('Source "{}" does not exist'.format(file_info["source"]))
 
 
 def write_txt_list(list_name, file_name):

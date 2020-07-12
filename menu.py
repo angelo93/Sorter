@@ -2,7 +2,6 @@
 import modules
 import os
 import sys
-import refactor
 
 
 class MainMenu:
@@ -182,19 +181,19 @@ class MainMenu:
             modules.del_empty_dirs(self.root)
 
         if choice == "1" and org_dirs == "Y":
-            file_dictionary = refactor.create_file_dictionary(self.root, organize=True)
+            file_dictionary = modules.create_file_dictionary(self.root, organize=True)
         elif choice == "2" and org_dirs == "Y":
-            file_dictionary = refactor.create_file_dictionary(
+            file_dictionary = modules.create_file_dictionary(
                 self.root, self.split_char, 0, organize=True, by_ext=False
             )
         elif choice == "1" and org_dirs == "N":
-            file_dictionary = refactor.create_file_dictionary(self.root)
+            file_dictionary = modules.create_file_dictionary(self.root)
         else:
-            file_dictionary = refactor.create_file_dictionary(
+            file_dictionary = modules.create_file_dictionary(
                 self.root, self.split_char, 0, by_ext=False
             )
 
-        refactor.move_files(self.root, file_dictionary)
+        modules.move_files(self.root, file_dictionary)
 
         print("-" * 100)
 
