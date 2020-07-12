@@ -1,0 +1,10 @@
+Make a dictionary of filenames as follows:
+
+filenames = {
+    file_name: {
+        parent_dir: "",
+        source: "",
+        destination: ""
+    }
+}
+
