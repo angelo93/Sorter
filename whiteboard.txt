@@ -8,3 +8,15 @@ filenames = {
     }
 }
 
+
+NEW FEATURE
+custom split and index:
+
+1. get example file name from user
+2. ask which character they would like to split the file name with
+    2.a show and verify
+    2.b if not, ask again
+3. if correct, ask for an index to create the files new alias.
+    3.a show and verify
+    if not, ask again
+4. return character and index
