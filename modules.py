@@ -66,8 +66,8 @@ def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, 
             continue
 
         for file_name in filenames:
-            # If split_char == '.', file's extension otherwise file's name
-            current_file = file_name.split(split_char)[index].strip()
+            # If split_char == '.', file's extension otherwise file's name w/out extension
+            current_file_alias = file_name.split(split_char)[index].strip()
 
             # Skip hidden files.
             if file_name.startswith("."):
@@ -75,17 +75,17 @@ def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, 
 
             # If organizing by file name, set parent directory to...
             if organize and not by_ext:
-                parent_dir = get_parent_dir_ONBE(file_name) + "\\" + current_file
+                parent_dir = get_parent_dir_ONBE(file_name) + "\\" + current_file_alias
                 destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
 
             # If organizing by file extension, set parent directory to...
             elif organize and by_ext:
-                parent_dir = get_parent_dir_OBE(file_name, split_char, index) + "\\" + current_file
+                parent_dir = get_parent_dir_OBE(file_name, split_char, index) + "\\" + current_file_alias
                 destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
 
             else:
-                parent_dir = current_file
-                destination = os.path.join(root_path, current_file, file_name).replace("\\", "/")
+                parent_dir = current_file_alias
+                destination = os.path.join(root_path, current_file_alias, file_name).replace("\\", "/")
 
             # Source path of current file.
             source = os.path.join(dirpath, file_name).replace("\\", "/")
