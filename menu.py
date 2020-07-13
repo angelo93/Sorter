@@ -2,6 +2,7 @@
 import modules
 import os
 import sys
+import helpers
 
 
 class MainMenu:
@@ -81,33 +82,33 @@ class MainMenu:
             option = option passed in from user. """
 
         if option == "1":
-            self.clear_screen()
+            helpers.clear_screen()
             # Generate logs.
             self.option_one()
         if option == "2":
-            self.clear_screen()
+            helpers.clear_screen()
             # Delete all empty directories and subdirectories.
             modules.del_empty_dirs(self.root)
             print("-" * 100)
         if option == "3":
-            self.clear_screen()
+            helpers.clear_screen()
             # Move found files to directory corresponding to their extension.
             self.option_three()
         if option == "4":
-            self.clear_screen()
+            helpers.clear_screen()
             self.option_four()
         if option == "5":
-            self.clear_screen()
+            helpers.clear_screen()
             self.option_five()
         if option == "6":
-            self.clear_screen()
+            helpers.clear_screen()
             self.create_lists()
         if option == "Q":
-            self.clear_screen()
+            helpers.clear_screen()
             print("Terminating program")
             sys.exit()
         if option == "M":
-            self.clear_screen()
+            helpers.clear_screen()
             self.show_menu()
 
     def option_one(self):
@@ -146,7 +147,7 @@ class MainMenu:
             modules.write_logs(self.file_name_list, self.file_name_txt)
             modules.write_logs(self.dup_list, self.dup_files_txt)
         if choice == "Q":
-            self.clear_screen()
+            helpers.clear_screen()
             self.show_menu()
             return
 

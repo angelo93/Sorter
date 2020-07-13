@@ -76,4 +76,11 @@ def verify(msg):
     while choice != "y" and choice != "n":
         choice = input("Please choose (y)es or (n)o: ").lower()
 
-    return choice
+    if choice == "y":
+        return True
+    else:
+        return False
+
+
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")

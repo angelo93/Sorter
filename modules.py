@@ -13,13 +13,15 @@ def del_empty_dirs(root_path):
 
     msg = "Find and delete all empty directories? (y/n): "
 
-    choice = input(msg).lower()
     choice = helpers.verify(msg)
+
+    if choice == False:
+        return print("Empty directories will not be deleted.")
 
     deleted_dirs = []  # List to record deleted directories
     deleted_txt = "deleted_dirs.txt"  # Text file to view deleted directories
 
-    if choice == "y":
+    if choice == True:
         for dirpath, dirnames, _ in os.walk(root_path, topdown=False):
             dirnames[:] = [d for d in dirnames if not d.startswith(".")]
             try:
@@ -36,8 +38,6 @@ def del_empty_dirs(root_path):
             write_logs(deleted_dirs, deleted_txt)
         else:
             print("There were no empty directories to delete")
-    else:
-        print("Empty directories will not be deleted.")
 
 
 def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, by_ext=True):
