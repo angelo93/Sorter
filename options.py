@@ -22,22 +22,22 @@ def option_one(log_info, log_name):
 
     if choice == "1":
         # Write list of files to a txt file.
-        modules.write_logs(self.file_list, self.files_txt)
+        modules.write_logs(file_list, files_txt)
     if choice == "2":
         # Write list of found extensions to txt file.
-        modules.write_logs(self.ext_list, self.exts_txt)
+        modules.write_logs(ext_list, exts_txt)
     if choice == "3":
         # Write list of found extensions to txt file.
-        modules.write_logs(self.file_name_list, self.file_name_txt)
+        modules.write_logs(file_name_list, file_name_txt)
     if choice == "4":
         # Write list of found duplicate files to txt file.
-        modules.write_logs(self.dup_list, self.dup_files_txt)
+        modules.write_logs(dup_list, dup_files_txt)
     if choice == "5":
         # Write all files from above options
-        modules.write_logs(self.file_list, self.files_txt)
-        modules.write_logs(self.ext_list, self.exts_txt)
-        modules.write_logs(self.file_name_list, self.file_name_txt)
-        modules.write_logs(self.dup_list, self.dup_files_txt)
+        modules.write_logs(file_list, files_txt)
+        modules.write_logs(ext_list, exts_txt)
+        modules.write_logs(file_name_list, file_name_txt)
+        modules.write_logs(dup_list, dup_files_txt)
     if choice == "Q":
         helpers.clear_screen()
         self.show_menu()
