@@ -1,4 +1,4 @@
-""" This file stores all helper functions. """
+""" This file stores main feature modules. """
 
 # Import required libraries
 import os
@@ -48,6 +48,10 @@ def del_empty_dirs(root_path):
 
 
 def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, by_ext=True):
+    """ Create a dictionary of all files in a directory tree.
+        The filename serves as the first level key and it's value is composed of a nested dictionary.
+        The nested dictionary holds the information to be used to move and organize the file according to user selected options"""
+
     dirs_to_skip = []
     file_dictionary = {}
     parent_dir = ""
@@ -102,7 +106,7 @@ def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, 
 
 
 def move_files(root_path, file_dictionary):
-    """ Move files from one directory to another """
+    """ Move files from one directory to another using a given dictionary of files. """
 
     for _, file_info in file_dictionary.items():
         # Check to see if the file needs to be moved, if not continue to next file.

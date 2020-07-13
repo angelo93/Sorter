@@ -1,3 +1,5 @@
+""" This file stores helper functions. """
+
 import os
 import shutil
 import string
@@ -25,6 +27,8 @@ def get_file_list(root_path):
 
 
 def get_parent_dir_ONBE(file_name):
+    """ Determine the parent directory based on a file's name to be organized alphabetically. """
+
     parent_dir = ""
 
     # Check to see if file name starts with a number.
@@ -40,6 +44,8 @@ def get_parent_dir_ONBE(file_name):
 
 
 def get_parent_dir_OBE(file_name, split_char, index):
+    """ Determine the parent directory based on a file's extension to be organized alphabetically. """
+
     parent_dir = ""
 
     # Check to see if extension starts with a number.
@@ -55,7 +61,7 @@ def get_parent_dir_OBE(file_name, split_char, index):
 
 
 def get_dirs_to_skip():
-    """ Helper function to create list of dirs to skip. """
+    """ Create a list of directories to skip. """
     dirs_to_skip = [char for char in string.ascii_uppercase]
     dirs_to_skip.append("#")
     dirs_to_skip.append("Other")
