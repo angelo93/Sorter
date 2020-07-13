@@ -67,3 +67,13 @@ def get_dirs_to_skip():
     dirs_to_skip.append("Other")
 
     return dirs_to_skip
+
+
+def verify(msg):
+    print("Are you sure you would like to,")
+    choice = input(msg).lower()
+
+    while choice != "y" and choice != "n":
+        choice = input("Please choose (y)es or (n)o: ").lower()
+
+    return choice

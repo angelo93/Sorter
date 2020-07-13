@@ -6,8 +6,9 @@
 # root_path = root.replace("\\", "/")
 
 
-def verify():
-    choice = input("Is this correct? (y/n): ").lower()
+def verify(msg):
+    print("Are you sure you would like to,")
+    choice = input(msg).lower()
 
     while choice != "y" and choice != "n":
         choice = input("Please choose (y)es or (n)o: ").lower()

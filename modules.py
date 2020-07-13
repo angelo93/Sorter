@@ -11,18 +11,11 @@ def del_empty_dirs(root_path):
     """ Delete all empty directories and subdirectories
         root_path = path of root folder passed in from menu instance. """
 
-    def get_choice():
-        choice = input(
-            "Are you sure you want to find and delete all empty directories? (y/n): "
-        ).lower()
+    msg = "Find and delete all empty directories? (y/n): "
 
-        while choice != "y" and choice != "n":
-            choice = input(
-                'That is not a valid selection, please press "y" or "n": ').lower()
+    choice = input(msg).lower()
+    choice = helpers.verify(msg)
 
-        return choice
-
-    choice = get_choice()
     deleted_dirs = []  # List to record deleted directories
     deleted_txt = "deleted_dirs.txt"  # Text file to view deleted directories
 
