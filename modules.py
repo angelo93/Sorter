@@ -12,11 +12,11 @@ def del_empty_dirs(root_path):
 
     def get_choice():
         choice = input(
-            "Are you sure you want to find and delete all empty directories? (Y/N): "
-        ).upper()
+            "Are you sure you want to find and delete all empty directories? (y/n): "
+        ).lower()
 
-        while choice != "Y" and choice != "N":
-            choice = input('That is not a valid selection, please press "Y" or "N": ').upper()
+        while choice != "y" and choice != "n":
+            choice = input('That is not a valid selection, please press "y" or "n": ').lower()
 
         return choice
 
@@ -24,7 +24,7 @@ def del_empty_dirs(root_path):
     deleted_dirs = []  # List to record deleted directories
     deleted_txt = "deleted_dirs.txt"  # Text file to view deleted directories
 
-    if choice == "Y":
+    if choice == "y":
         for dirpath, dirnames, _ in os.walk(root_path, topdown=False):
             dirnames[:] = [d for d in dirnames if not d.startswith(".")]
             try:
@@ -80,12 +80,16 @@ def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, 
 
             # If organizing by file extension, set parent directory to...
             elif organize and by_ext:
-                parent_dir = get_parent_dir_OBE(file_name, split_char, index) + "\\" + current_file_alias
+                parent_dir = (
+                    get_parent_dir_OBE(file_name, split_char, index) + "\\" + current_file_alias
+                )
                 destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
 
             else:
                 parent_dir = current_file_alias
-                destination = os.path.join(root_path, current_file_alias, file_name).replace("\\", "/")
+                destination = os.path.join(root_path, current_file_alias, file_name).replace(
+                    "\\", "/"
+                )
 
             # Source path of current file.
             source = os.path.join(dirpath, file_name).replace("\\", "/")

@@ -66,29 +66,3 @@ def get_custom_char_and_index():
 
     return results
 
-
-# def strip_chars(file_name):
-#     new_file_name = file_name
-
-#     def get_strip_options():
-#         valid = ["1", "2"]
-
-#         print("Please select an option.")
-#         print("1. To remove first character.")
-#         print("2. To remove last character.")
-
-#         option = input("Please choose an option: ")
-
-#         while option not in valid:
-#             option = input("Please choose from the available options: ")
-
-#         return option
-
-#     option = get_strip_options()
-
-#     if option == "1":
-#         new_file_name = new_file_name[1:]
-#     elif option == "2":
-#         new_file_name = new_file_name[::-1]
-
-#     return new_file_name
