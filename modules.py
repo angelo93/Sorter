@@ -4,6 +4,7 @@
 import os
 import shutil
 import string
+import helpers
 
 
 def del_empty_dirs(root_path):
@@ -16,7 +17,8 @@ def del_empty_dirs(root_path):
         ).lower()
 
         while choice != "y" and choice != "n":
-            choice = input('That is not a valid selection, please press "y" or "n": ').lower()
+            choice = input(
+                'That is not a valid selection, please press "y" or "n": ').lower()
 
         return choice
 
@@ -75,15 +77,19 @@ def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, 
 
             # If organizing by file name, set parent directory to...
             if organize and not by_ext:
-                parent_dir = get_parent_dir_ONBE(file_name) + "\\" + current_file_alias
-                destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
+                parent_dir = get_parent_dir_ONBE(
+                    file_name) + "\\" + current_file_alias
+                destination = os.path.join(
+                    root_path, parent_dir, file_name).replace("\\", "/")
 
             # If organizing by file extension, set parent directory to...
             elif organize and by_ext:
                 parent_dir = (
-                    get_parent_dir_OBE(file_name, split_char, index) + "\\" + current_file_alias
+                    get_parent_dir_OBE(file_name, split_char,
+                                       index) + "\\" + current_file_alias
                 )
-                destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
+                destination = os.path.join(
+                    root_path, parent_dir, file_name).replace("\\", "/")
 
             else:
                 parent_dir = current_file_alias
@@ -140,10 +146,12 @@ def move_files(root_path, file_dictionary):
             continue
 
         try:
-            os.makedirs(os.path.join(root_path, file_info["parent_dir"]), exist_ok=True)
+            os.makedirs(os.path.join(
+                root_path, file_info["parent_dir"]), exist_ok=True)
             shutil.move(file_info["source"], file_info["destination"])
         except FileExistsError:
-            print('The file "{}" already exists.'.format(file_info["destination"]))
+            print('The file "{}" already exists.'.format(
+                file_info["destination"]))
         except FileNotFoundError:
             print('Source "{}" does not exist'.format(file_info["source"]))
 
@@ -151,20 +159,13 @@ def move_files(root_path, file_dictionary):
 def write_txt_list(list_name, file_name):
     """ Record elements in a given list to a text file for reference. """
 
-    def make_logs_dir(file_name):
-        """ Make the folder to hold text files. """
-        try:
-            os.mkdir(save_path)
-        except FileExistsError:
-            print("Folder for lists already exists, proceeding to write {}".format(file_name))
-
     save_path = os.getcwd() + "\\logs"
 
     # Create the complete path name for the text file.
     complete_name = os.path.join(save_path, file_name)
 
     # Call make_dir to make the text folder in case it's not present.
-    make_logs_dir(file_name)
+    helpers.make_logs_dir(file_name, save_path)
 
     with open(complete_name, "w", encoding="utf-8") as text_file:
         for item in list_name:
@@ -187,6 +188,7 @@ def rename_extension(root_path, old_ext, new_ext):
             temp[-1] = new_ext
             new_filename = ".".join(temp)
             try:
-                os.rename(os.path.join(root_path, filename), os.path.join(root_path, new_filename))
+                os.rename(os.path.join(root_path, filename),
+                          os.path.join(root_path, new_filename))
             except:
                 print(f"Unable to rename the extension of {filename}.")

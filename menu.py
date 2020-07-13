@@ -181,7 +181,8 @@ class MainMenu:
             modules.del_empty_dirs(self.root)
 
         if choice == "1" and org_dirs == "Y":
-            file_dictionary = modules.create_file_dictionary(self.root, organize=True)
+            file_dictionary = modules.create_file_dictionary(
+                self.root, organize=True)
         elif choice == "2" and org_dirs == "Y":
             file_dictionary = modules.create_file_dictionary(
                 self.root, self.split_char, 0, organize=True, by_ext=False
@@ -219,8 +220,10 @@ class MainMenu:
         )
 
         root_path = input("Please provide the path for the directory: ")
-        old_ext = input('Please provide the extension you wish to replace without the ".": ')
-        new_ext = input('Please provide the new extension to be used without the ".": ')
+        old_ext = input(
+            'Please provide the extension you wish to replace without the ".": ')
+        new_ext = input(
+            'Please provide the new extension to be used without the ".": ')
 
         modules.rename_extension(root_path, old_ext, new_ext)
 
@@ -236,10 +239,11 @@ class MainMenu:
         choice = input(
             "Would you like to provide a spicific character to generate file names with? (Y/N)"
             '\n  Ex. 12345.txt (split on ".") = 12345: '
-        ).upper()
+        ).lower()
 
-        while choice != "Y" and choice != "N":
-            choice = input('That is not a valid answer, please pres "Y" or "N". ').upper()
+        while choice != "y" and choice != "n":
+            choice = input(
+                'That is not a valid answer, please press "y" or "n". ').lower()
 
         if choice == "Y":
             self.split_char = input(
@@ -249,7 +253,9 @@ class MainMenu:
 
         if len(self.split_char) == 0 or self.split_char == None:
             self.split_char = "."
-        print('File names will be generated using the character "{}".'.format(self.split_char))
+
+        print('File names will be generated using the character "{}".'.format(
+            self.split_char))
 
         for _, __, filenames in os.walk(self.root):
             # Skip hidden files.
@@ -260,7 +266,8 @@ class MainMenu:
                     self.ext_list.append(name.split(".")[-1])
                 # Check to see if the generated file name exists in the list of file names.
                 if name.split(self.split_char)[0].strip() not in self.file_name_list:
-                    self.file_name_list.append(name.split(self.split_char)[0].strip())
+                    self.file_name_list.append(
+                        name.split(self.split_char)[0].strip())
                 # Check to see if the file already exists in the list of found files.
                 if name not in self.file_list:
                     self.file_list.append(name)
@@ -271,4 +278,3 @@ class MainMenu:
         self.file_list = sorted(self.file_list)
         self.ext_list = sorted(self.ext_list)
         print("-" * 100)
-

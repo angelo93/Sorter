@@ -6,10 +6,6 @@
 # root_path = root.replace("\\", "/")
 
 
-#     3.a show and verify
-# 4. return character and index
-
-
 def verify():
     choice = input("Is this correct? (y/n): ").lower()
 
@@ -65,4 +61,3 @@ def get_custom_char_and_index():
     results.append(index)
 
     return results
-
