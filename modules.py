@@ -165,7 +165,8 @@ def write_logs(list_name, file_name):
     complete_file_path = os.path.join(save_path, file_name)
 
     # Call make_dir to make the text folder in case it's not present.
-    helpers.make_logs_dir(save_path)
+    if os.path.isdir(save_path) == False:
+        helpers.make_logs_dir(save_path)
 
     print(f"Proceeding to write {file_name}.")
 
@@ -179,6 +180,8 @@ def write_logs(list_name, file_name):
 
 
 def rename_extension(root_path, old_ext, new_ext):
+    """ Batch rename one file extension at a time in a given directory """
+
     if os.path.isdir(root_path) == False:
         return print(f"Unable to find:\n{root_path}")
 

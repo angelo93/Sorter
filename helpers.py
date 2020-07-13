@@ -13,6 +13,8 @@ def make_logs_dir(save_path):
 
 
 def get_file_list(root_path):
+    """ Create a list of files in a given directory """
+
     file_list = []
 
     for filename in os.listdir(root_path):
