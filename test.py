@@ -53,10 +53,12 @@ def get_custom_char_and_index():
         split_char = get_split_char()
         print(example_file.split(split_char))
         print("-" * 50)
+
         max = example_file.split(split_char).length()
         index = get_index(max)
         print(example_file.split(split_char)[index])
         print("-" * 50)
+
         verifying = not verify()
 
     results.append(split_char)
@@ -65,6 +67,28 @@ def get_custom_char_and_index():
     return results
 
 
-# stuff = get_custom_char_and_index()
-num = get_index(7)
-print(num)
+# def strip_chars(file_name):
+#     new_file_name = file_name
+
+#     def get_strip_options():
+#         valid = ["1", "2"]
+
+#         print("Please select an option.")
+#         print("1. To remove first character.")
+#         print("2. To remove last character.")
+
+#         option = input("Please choose an option: ")
+
+#         while option not in valid:
+#             option = input("Please choose from the available options: ")
+
+#         return option
+
+#     option = get_strip_options()
+
+#     if option == "1":
+#         new_file_name = new_file_name[1:]
+#     elif option == "2":
+#         new_file_name = new_file_name[::-1]
+
+#     return new_file_name
