@@ -156,37 +156,40 @@ def move_files(root_path, file_dictionary):
             print('Source "{}" does not exist'.format(file_info["source"]))
 
 
-def write_txt_list(list_name, file_name):
+def write_logs(list_name, file_name):
     """ Record elements in a given list to a text file for reference. """
 
     save_path = os.getcwd() + "\\logs"
 
     # Create the complete path name for the text file.
-    complete_name = os.path.join(save_path, file_name)
+    complete_file_path = os.path.join(save_path, file_name)
 
     # Call make_dir to make the text folder in case it's not present.
-    helpers.make_logs_dir(file_name, save_path)
+    helpers.make_logs_dir(save_path)
 
-    with open(complete_name, "w", encoding="utf-8") as text_file:
+    print(f"Proceeding to write {file_name}.")
+
+    with open(complete_file_path, "w", encoding="utf-8") as log_file:
         for item in list_name:
-            text_file.write(item + "\n")
+            log_file.write(item + "\n")
 
-    text_file.close()
+    log_file.close()
+
+    return print("Write was succesful")
 
 
 def rename_extension(root_path, old_ext, new_ext):
-    filenames = []
+    if os.path.isdir(root_path) == False:
+        return print(f"Unable to find:\n{root_path}")
 
-    for filename in os.listdir(root_path):
-        if os.path.isfile(os.path.join(root_path, filename)):
-            filenames.append(filename)
+    file_list = helpers.get_file_list(root_path)
 
-    for filename in filenames:
+    for filename in file_list:
         if filename.split(".")[-1] == old_ext:
             new_filename = filename
-            temp = new_filename.split(".")
-            temp[-1] = new_ext
-            new_filename = ".".join(temp)
+            temp_ext = new_filename.split(".")
+            temp_ext[-1] = new_ext
+            new_filename = ".".join(temp_ext)
             try:
                 os.rename(os.path.join(root_path, filename),
                           os.path.join(root_path, new_filename))

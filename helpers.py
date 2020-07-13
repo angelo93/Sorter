@@ -3,10 +3,20 @@ import shutil
 import string
 
 
-def make_logs_dir(file_name, save_path):
+def make_logs_dir(save_path):
     """ Make the folder to hold text files. """
 
     try:
         os.mkdir(save_path)
     except FileExistsError:
-        print("Folder for lists already exists, proceeding to write {}".format(file_name))
+        print("Folder for logs already exists")
+
+
+def get_file_list(root_path):
+    file_list = []
+
+    for filename in os.listdir(root_path):
+        if os.path.isfile(os.path.join(root_path, filename)):
+            file_list.append(filename)
+
+    return file_list
