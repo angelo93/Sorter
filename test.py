@@ -43,6 +43,7 @@ def get_index(max):
 def get_custom_char_and_index():
     # 1. get example file name from user
     example_file = input("Please enter a file to use as a template:\n")
+    msg = ""
     results = []
 
     verifying = True
@@ -56,7 +57,8 @@ def get_custom_char_and_index():
         print(example_file.split(split_char)[index])
         print("-" * 50)
 
-        verifying = not verify()
+        msg = f"Use {split_char} and {index} to sort your files?"
+        verifying = not verify(msg)
 
     results.append(split_char)
     results.append(index)

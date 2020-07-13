@@ -37,9 +37,6 @@ class MainMenu:
         # Variable to specify which character to split file names on.
         self.split_char = ""
 
-    def clear_screen(self):
-        os.system("cls" if os.name == "nt" else "clear")
-
     def show_menu(self):
         """ Show main options to user. """
 
