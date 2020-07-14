@@ -67,8 +67,10 @@ def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, 
 
             # If organizing by file name, set parent directory to...
             if organize and not by_ext:
-                parent_dir = helpers.get_parent_dir_ONBE(file_name) + "\\" + current_file_alias
-                destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
+                parent_dir = helpers.get_parent_dir_ONBE(
+                    file_name) + "\\" + current_file_alias
+                destination = os.path.join(
+                    root_path, parent_dir, file_name).replace("\\", "/")
 
             # If organizing by file extension, set parent directory to...
             elif organize and by_ext:
@@ -77,7 +79,8 @@ def create_file_dictionary(root_path, split_char=".", index=-1, organize=False, 
                     + "\\"
                     + current_file_alias
                 )
-                destination = os.path.join(root_path, parent_dir, file_name).replace("\\", "/")
+                destination = os.path.join(
+                    root_path, parent_dir, file_name).replace("\\", "/")
 
             else:
                 parent_dir = current_file_alias
@@ -106,10 +109,12 @@ def move_files(root_path, file_dictionary):
             continue
 
         try:
-            os.makedirs(os.path.join(root_path, file_info["parent_dir"]), exist_ok=True)
+            os.makedirs(os.path.join(
+                root_path, file_info["parent_dir"]), exist_ok=True)
             shutil.move(file_info["source"], file_info["destination"])
         except FileExistsError:
-            print('The file "{}" already exists.'.format(file_info["destination"]))
+            print('The file "{}" already exists.'.format(
+                file_info["destination"]))
         except FileNotFoundError:
             print('Source "{}" does not exist'.format(file_info["source"]))
 
@@ -152,6 +157,7 @@ def rename_extension(root_path, old_ext, new_ext):
             temp_ext[-1] = new_ext
             new_filename = ".".join(temp_ext)
             try:
-                os.rename(os.path.join(root_path, filename), os.path.join(root_path, new_filename))
+                os.rename(os.path.join(root_path, filename),
+                          os.path.join(root_path, new_filename))
             except:
                 print(f"Unable to rename the extension of {filename}.")

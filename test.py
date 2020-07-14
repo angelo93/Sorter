@@ -1,9 +1,12 @@
 import os
 import string
 import shutil
+import modules
+import helpers
+import refactor
 
-# root = os.getcwd() + "/test"
-# root_path = root.replace("\\", "/")
+root = os.getcwd() + "/test"
+root_path = root.replace("\\", "/")
 
 
 # CUSTOM SPLIT CHARACTER LOGIC FOR CREATING LISTS
