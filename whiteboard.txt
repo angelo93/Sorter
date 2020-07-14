@@ -20,3 +20,8 @@ custom split and index:
     3.a show and verify
     if not, ask again
 4. return character and index
+
+MENU
+1. Reduce list and name variables to two.
+    self.data_sets
+    self.log_names
