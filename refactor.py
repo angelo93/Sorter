@@ -9,41 +9,63 @@ root = os.getcwd() + "\\test"
 root_path = root.replace("\\", "/")
 
 
-def option_one():
-    """ Create a file listing either all
-          extensions, files and or file names. """
+def create_data_sets(root_path, edit_params):
+    """ Create list of files, extensions and file names split on user given character.
+        Will overwrite previously created lists. """
 
-    print("Press 1 to create a log listing all extensions.")
-    print("Press 2 to create a log listing all files.")
-    print("Press 3 to create a log listing all file names.")
-    print("Press 4 to create a log listing all duplicate files.")
-    print("Press 5 to create all logs.")
-    print('Press "Q" to go back to Main Menu.')
+    if len(edit_params[0]) != 1:
+        return print("Unable to split filenames with more than or less than one character.")
 
-    choice = input("Please select an option: ").lower()
-    valid = ["1", "2", "3", "4", "5", "q"]
+    # Reset lists.
+    ext_list = []
+    file_list = []
+    filename_list = []
+    dup_list = []
 
-    while choice not in valid:
-        choice = input("That is not a valid option, please try again: ")
+    data_sets = []
 
-    if choice == "q":
-        helpers.clear_screen()
-        # self.show_menu()
-        return
+    for _, __, filenames in os.walk(root_path):
+        # Skip hidden files.
+        filenames = [f for f in filenames if not f[0] == "."]
+        for name in filenames:
+            # Check to see if the extension is already in the list of extensions.
+            if name.split(".")[-1] not in ext_list:
+                ext_list.append(name.split(".")[-1])
+            # Check to see if the generated file name exists in the list of file names.
+            if name.split(edit_params[0])[edit_params[1]].strip() not in filename_list:
+                filename_list.append(
+                    name.split(edit_params[0])[edit_params[1]].strip())
+            # Check to see if the file already exists in the list of found files.
+            if name not in file_list:
+                file_list.append(name)
+            else:
+                dup_list.append(name)
 
-    index = int(choice)
-    edit_params = test.get_custom_char_and_index()
-    data_sets = test.create_data_sets(edit_params, root)
-    log_names = ["extension_list.txt", "file_list.txt",
-                 "filename_list.txt", "duplicate_files.txt"]
+    ext_list = sorted(ext_list)
+    data_sets.append(ext_list)
 
-    if index == 5:
-        index = 0
-        for data_set in data_sets:
-            modules.write_logs(data_set, log_names[index])
-            index += 1
-    else:
-        modules.write_logs(data_sets[index - 1], log_names[index - 1])
+    file_list = sorted(file_list)
+    data_sets.append(file_list)
 
-    print("-" * 100)
+    filename_list = sorted(filename_list)
+    data_sets.append(filename_list)
 
+    if dup_list:
+        dup_list = sorted(dup_list)
+    data_sets.append(dup_list)
+
+    return data_sets
+
+
+def get_file_list(root_path):
+    """ Create a list of files in a given directory """
+
+    file_list = []
+
+    for filename in os.listdir(root_path):
+        # Skip hidden files.
+        filenames = [f for f in filenames if not f[0] == "."]
+        if os.path.isfile(os.path.join(root_path, filename)):
+            file_list.append(filename)
+
+    return file_list

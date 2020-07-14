@@ -20,6 +20,8 @@ def get_file_list(root_path):
     file_list = []
 
     for filename in os.listdir(root_path):
+        # Skip hidden files.
+        filenames = [f for f in filenames if not f[0] == "."]
         if os.path.isfile(os.path.join(root_path, filename)):
             file_list.append(filename)
 
@@ -91,7 +93,7 @@ def create_data_sets(root_path, edit_params):
         Will overwrite previously created lists. """
 
     if len(edit_params[0]) != 1:
-        return print("Unable to split filenames with more than one character.")
+        return print("Unable to split filenames with more than or less than one character.")
 
     # Reset lists.
     ext_list = []
@@ -134,29 +136,6 @@ def create_data_sets(root_path, edit_params):
     return data_sets
 
 
-def get_split_char():
-    # Ask which character they would like to split the file name with
-    split_char = input(
-        "Please provide a character you would like to the split the filename with: "
-    )
-
-    while len(split_char) != 1:
-        split_char = input(print("Please choose only ONE character: "))
-
-    return split_char
-
-
-def get_index(max):
-    # Ask for an index to create the files new alias.
-    print("Please provide an index to use.")
-    index = input(f"Input range is 0 - {max}: ")
-
-    while index.isdigit() == False or int(index) > max:
-        index = input("Please provide a number within the range: ")
-
-    return int(index)
-
-
 def get_custom_char_and_index():
     # Get example file name from user
     example_file = input("Please enter a file to use as a template:\n")
@@ -184,3 +163,26 @@ def get_custom_char_and_index():
     user_params.append(index)
 
     return user_params
+
+
+def get_split_char():
+    # Ask which character they would like to split the file name with
+    split_char = input(
+        "Please provide a character you would like to the split the filename with: "
+    )
+
+    while len(split_char) != 1:
+        split_char = input(print("Please choose only ONE character: "))
+
+    return split_char
+
+
+def get_index(max):
+    # Ask for an index to create the files new alias.
+    print("Please provide an index to use.")
+    index = input(f"Input range is 0 - {max}: ")
+
+    while index.isdigit() == False or int(index) > max:
+        index = input("Please provide a number within the range: ")
+
+    return int(index)
