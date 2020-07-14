@@ -3,7 +3,7 @@ import helpers
 import os
 
 
-def option_one(log_info, log_name):
+def option_one(root):
     """ Create a file listing either all
           extensions, files and or file names. """
 
@@ -14,34 +14,30 @@ def option_one(log_info, log_name):
     print("Press 5 to create all logs.")
     print('Press "Q" to go back to Main Menu.')
 
-    choice = input("Please select an option: ").upper()
-    valid = ["1", "2", "3", "4", "5", "Q"]
+    choice = input("Please select an option: ").lower()
+    valid = ["1", "2", "3", "4", "5", "q"]
 
     while choice not in valid:
         choice = input("That is not a valid option, please try again: ")
 
-    if choice == "1":
-        # Write list of files to a txt file.
-        modules.write_logs(file_list, files_txt)
-    if choice == "2":
-        # Write list of found extensions to txt file.
-        modules.write_logs(ext_list, exts_txt)
-    if choice == "3":
-        # Write list of found extensions to txt file.
-        modules.write_logs(file_name_list, file_name_txt)
-    if choice == "4":
-        # Write list of found duplicate files to txt file.
-        modules.write_logs(dup_list, dup_files_txt)
-    if choice == "5":
-        # Write all files from above options
-        modules.write_logs(file_list, files_txt)
-        modules.write_logs(ext_list, exts_txt)
-        modules.write_logs(file_name_list, file_name_txt)
-        modules.write_logs(dup_list, dup_files_txt)
-    if choice == "Q":
+    if choice == "q":
         helpers.clear_screen()
-        self.show_menu()
+        # self.show_menu()
         return
+
+    index = int(choice)
+    edit_params = helpers.get_custom_char_and_index()
+    data_sets = helpers.create_data_sets(root, edit_params)
+    log_names = ["extension_list.txt", "file_list.txt",
+                 "filename_list.txt", "duplicate_files.txt"]
+
+    if index == 5:
+        index = 0
+        for data_set in data_sets:
+            modules.write_logs(data_set, log_names[index])
+            index += 1
+    else:
+        modules.write_logs(data_sets[index - 1], log_names[index - 1])
 
     print("-" * 100)
 

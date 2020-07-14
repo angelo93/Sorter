@@ -1,66 +1,29 @@
-# import os
-# import string
-# import shutil
+import os
+import string
+import shutil
 
 # root = os.getcwd() + "/test"
 # root_path = root.replace("\\", "/")
 
 
-def verify(msg):
-    print("Are you sure you would like to,")
-    choice = input(msg).lower()
+# CUSTOM SPLIT CHARACTER LOGIC FOR CREATING LISTS
+# choice = input(
+#     "Would you like to provide a spicific character to generate file names with? (Y/N)"
+#     '\n  Ex. 12345.txt (split on ".") = 12345: '
+# ).lower()
 
-    while choice != "y" and choice != "n":
-        choice = input("Please choose (y)es or (n)o: ").lower()
+# while choice != "y" and choice != "n":
+#     choice = input(
+#         'That is not a valid answer, please press "y" or "n". ').lower()
 
-    if choice == "y":
-        return True
-    else:
-        return False
+# if choice == "Y":
+#     split_char = input(
+#         "Please specify which character you would like to split the name on."
+#         '\n  Case sensitivity is important ("c" != "C"), the default character is "." : '
+#     )
 
+# if len(split_char) == 0 or split_char == None:
+#     split_char = "."
 
-def get_split_char():
-
-    # 2. ask which character they would like to split the file name with
-    split_char = input(
-        "Please provide a character you would like to the split the filename with:\n"
-    )
-
-    return split_char
-
-
-def get_index(max):
-    # 3. Ask for an index to create the files new alias.
-    print("Please provide an index to use.")
-    index = input(f"Input range is 0 - {max}: ")
-
-    while index.isdigit() == False or int(index) > max:
-        index = input("Please provide a number within the range: ")
-
-    return int(index)
-
-
-def get_custom_char_and_index():
-    # 1. get example file name from user
-    example_file = input("Please enter a file to use as a template:\n")
-    msg = ""
-    results = []
-
-    verifying = True
-    while verifying == True:
-        split_char = get_split_char()
-        print(example_file.split(split_char))
-        print("-" * 50)
-
-        max = example_file.split(split_char).length()
-        index = get_index(max)
-        print(example_file.split(split_char)[index])
-        print("-" * 50)
-
-        msg = f"Use {split_char} and {index} to sort your files?"
-        verifying = not verify(msg)
-
-    results.append(split_char)
-    results.append(index)
-
-    return results
+# print('File names will be generated using the character "{}".'.format(
+#     split_char))

@@ -84,3 +84,103 @@ def verify(msg):
 
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
+
+
+def create_data_sets(root_path, edit_params):
+    """ Create list of files, extensions and file names split on user given character.
+        Will overwrite previously created lists. """
+
+    if len(edit_params[0]) != 1:
+        return print("Unable to split filenames with more than one character.")
+
+    # Reset lists.
+    ext_list = []
+    file_list = []
+    filename_list = []
+    dup_list = []
+
+    data_sets = []
+
+    for _, __, filenames in os.walk(root_path):
+        # Skip hidden files.
+        filenames = [f for f in filenames if not f[0] == "."]
+        for name in filenames:
+            # Check to see if the extension is already in the list of extensions.
+            if name.split(".")[-1] not in ext_list:
+                ext_list.append(name.split(".")[-1])
+            # Check to see if the generated file name exists in the list of file names.
+            if name.split(edit_params[0])[edit_params[1]].strip() not in filename_list:
+                filename_list.append(
+                    name.split(edit_params[0])[edit_params[1]].strip())
+            # Check to see if the file already exists in the list of found files.
+            if name not in file_list:
+                file_list.append(name)
+            else:
+                dup_list.append(name)
+
+    ext_list = sorted(ext_list)
+    data_sets.append(ext_list)
+
+    file_list = sorted(file_list)
+    data_sets.append(file_list)
+
+    filename_list = sorted(filename_list)
+    data_sets.append(filename_list)
+
+    if dup_list:
+        dup_list = sorted(dup_list)
+    data_sets.append(dup_list)
+
+    return data_sets
+
+
+def get_split_char():
+    # Ask which character they would like to split the file name with
+    split_char = input(
+        "Please provide a character you would like to the split the filename with: "
+    )
+
+    while len(split_char) != 1:
+        split_char = input(print("Please choose only ONE character: "))
+
+    return split_char
+
+
+def get_index(max):
+    # Ask for an index to create the files new alias.
+    print("Please provide an index to use.")
+    index = input(f"Input range is 0 - {max}: ")
+
+    while index.isdigit() == False or int(index) > max:
+        index = input("Please provide a number within the range: ")
+
+    return int(index)
+
+
+def get_custom_char_and_index():
+    # Get example file name from user
+    example_file = input("Please enter a file to use as a template:\n")
+    msg = ""
+    user_params = []
+
+    verifying = True
+    while verifying == True:
+        split_char = get_split_char()
+        print(
+            f"Files will be split like so...\n  {example_file.split(split_char)}")
+        print("-" * 50)
+
+        max = len(example_file.split(split_char)) - 1
+        index = get_index(max)
+
+        print(
+            f"Filenames will be similar to...\n  {example_file.split(split_char)[index]}")
+        print("-" * 50)
+
+        msg = f"Use the character '{split_char}' and an index of {index} to sort your files? (y/n) "
+        verifying = not verify(msg)
+
+    user_params.append(split_char)
+    user_params.append(index)
+
+    return user_params
