@@ -112,8 +112,7 @@ def create_data_sets(root_path, edit_params):
                 ext_list.append(name.split(".")[-1])
             # Check to see if the generated file name exists in the list of file names.
             if name.split(edit_params[0])[edit_params[1]].strip() not in filename_list:
-                filename_list.append(
-                    name.split(edit_params[0])[edit_params[1]].strip())
+                filename_list.append(name.split(edit_params[0])[edit_params[1]].strip())
             # Check to see if the file already exists in the list of found files.
             if name not in file_list:
                 file_list.append(name)
@@ -145,15 +144,13 @@ def get_custom_char_and_index():
     verifying = True
     while verifying == True:
         split_char = get_split_char()
-        print(
-            f"Files will be split like so...\n  {example_file.split(split_char)}")
+        print(f"Files will be split like so...\n  {example_file.split(split_char)}")
         print("-" * 50)
 
         max = len(example_file.split(split_char)) - 1
         index = get_index(max)
 
-        print(
-            f"Filenames will be similar to...\n  {example_file.split(split_char)[index]}")
+        print(f"Filenames will be similar to...\n  {example_file.split(split_char)[index]}")
         print("-" * 50)
 
         msg = f"Use the character '{split_char}' and an index of {index} to sort your files? (y/n) "
@@ -167,9 +164,7 @@ def get_custom_char_and_index():
 
 def get_split_char():
     # Ask which character they would like to split the file name with
-    split_char = input(
-        "Please provide a character you would like to the split the filename with: "
-    )
+    split_char = input("Please provide a character you would like to the split the filename with: ")
 
     while len(split_char) != 1:
         split_char = input(print("Please choose only ONE character: "))
